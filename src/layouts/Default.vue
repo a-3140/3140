@@ -6,6 +6,15 @@ import Header from '@/components/layout/Header.vue';
 <template>
     <div>
         <Header />
-        <slot />
+        <div class="container mx-auto mt-4">
+            <slot />
+        </div>
     </div>
 </template>
+
+
+<style>
+#content {
+    display: flex;
+}
+</style>

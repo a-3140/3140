@@ -2,74 +2,48 @@
 </script>
 
 <template>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <!-- Modal toggle -->
-    <button
-        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        type="button"
-        data-modal-toggle="default-modal"
-    >Toggle modal</button>
-
-    <!-- Main modal -->
-    <div
-        id="default-modal"
-        aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0"
-    >
-        <div class="relative px-4 w-full max-w-2xl h-full md:h-auto">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div
-                    class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600"
-                >
+    <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
+        <header class="pt-16 pb-9 sm:pb-16">
+            <h1
+                class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200"
+            >Blog</h1>
+            <p class="text-lg text-slate-700 dark:text-slate-400">Programming blog by 3140.</p>
+        </header>
+        <div>
+            <ol class="relative border-l border-gray-200 dark:border-gray-700">
+                <li class="mb-10 ml-4">
+                    <div
+                        class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+                    ></div>
+                    <time
+                        class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
+                    >February 2022</time>
                     <h3
-                        class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white"
-                    >Terms of Service</h3>
-                    <button
-                        type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-toggle="default-modal"
+                        class="text-lg font-semibold text-gray-900 dark:text-white"
+                    >When to use and not to use lazy loading</h3>
+                    <p
+                        class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"
+                    >We should start with the question: What is lazy loading? Then, how does it work? How do we use it for optimization?</p>
+                    <a
+                        href="#"
+                        class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                     >
+                        Read
                         <svg
-                            class="w-5 h-5"
+                            class="ml-2 w-3 h-3"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path
                                 fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
                                 clip-rule="evenodd"
                             />
                         </svg>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                    <p
-                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
-                    >With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.</p>
-                    <p
-                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
-                    >The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.</p>
-                </div>
-                <!-- Modal footer -->
-                <div
-                    class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
-                >
-                    <button
-                        data-modal-toggle="default-modal"
-                        type="button"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >I accept</button>
-                    <button
-                        data-modal-toggle="default-modal"
-                        type="button"
-                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600"
-                    >Decline</button>
-                </div>
-            </div>
+                    </a>
+                </li>
+            </ol>
         </div>
     </div>
 </template>
