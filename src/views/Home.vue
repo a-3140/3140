@@ -1,4 +1,14 @@
 <script setup lang="ts">
+const title = 'Blog';
+const titleDescription = 'Programming blog by 3140';
+const actionButton = 'Read';
+
+const node = {
+    id: '#',
+    title: 'When to use and not to use lazy loading',
+    dateCreated: 'March 14, 2022',
+    description: 'We should start with the question: What is lazy loading? Then, how does it work? How do we use it for optimization?',
+}
 </script>
 
 <template>
@@ -6,8 +16,8 @@
         <header class="pt-16 pb-9 sm:pb-16">
             <h1
                 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200"
-            >Blog</h1>
-            <p class="text-lg text-slate-700 dark:text-slate-400">Programming blog by 3140.</p>
+            >{{ title }}</h1>
+            <p class="text-lg text-slate-700 dark:text-slate-400">{{ titleDescription }}</p>
         </header>
         <div>
             <ol class="relative border-l border-gray-200 dark:border-gray-700">
@@ -17,18 +27,16 @@
                     ></div>
                     <time
                         class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-                    >February 2022</time>
-                    <h3
-                        class="text-lg font-semibold text-gray-900 dark:text-white"
-                    >When to use and not to use lazy loading</h3>
+                    >{{ node.dateCreated }}</time>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ node.title }}</h3>
                     <p
                         class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"
-                    >We should start with the question: What is lazy loading? Then, how does it work? How do we use it for optimization?</p>
-                    <a
-                        href="#"
+                    >{{ node.description }}</p>
+                    <router-link
+                        :to="node.id"
                         class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                     >
-                        Read
+                        {{ actionButton }}
                         <svg
                             class="ml-2 w-3 h-3"
                             fill="currentColor"
@@ -41,7 +49,7 @@
                                 clip-rule="evenodd"
                             />
                         </svg>
-                    </a>
+                    </router-link>
                 </li>
             </ol>
         </div>
