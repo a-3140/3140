@@ -3,11 +3,11 @@ import { defineComponent, toRefs } from 'vue'
 
 export default defineComponent({
     props: {
-        id: String,
+        blogId: String,
     },
     setup(props) {
-        const { id } = toRefs(props);
-        console.log('id', id);
+        const { blogId } = toRefs(props);
+        console.log('id', blogId);
     }
 })
 </script>
