@@ -1,12 +1,23 @@
-<script setup lang="ts">
+<script lang="ts">
 import Header from '@/components/layout/Header.vue';
+import { defineComponent } from 'vue';
+import bg from '@/assets/bg.jpg';
+
+export default defineComponent({
+    components: { Header },
+    data() {
+        return {
+            image: `url(${bg})`,
+        }
+    }
+})
 
 </script>
 
 <template>
-    <div>
+    <div id="wrapper" v-bind:style="{ 'background-image': image }">
         <Header />
-        <div class="container mx-auto mt-4">
+        <div class="container mx-auto content-wrapper">
             <slot />
         </div>
     </div>
@@ -16,5 +27,14 @@ import Header from '@/components/layout/Header.vue';
 <style>
 #content {
     display: flex;
+}
+#wrapper {
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.content-wrapper {
+    background: rgba(255, 255, 255, 0.9);
 }
 </style>
