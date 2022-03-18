@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { data } from '@/data/data'
+import { dateToString } from '@/helpers/date'
 
 const title = 'Blog';
-const titleDescription = 'Programming blog by 3140';
 const actionButton = 'Read';
+const titleDescription = 'Recent blogs and researches regarding tech topics.';
 
 </script>
 
 <template>
     <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
-        <header class="pt-16 pb-9 sm:pb-16">
-            <h1
-                class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200"
-            >{{ title }}</h1>
-            <p class="text-lg text-slate-700 dark:text-slate-400">{{ titleDescription }}</p>
+        <header class="pt-16 mb-6 pb-2 sm:mb-10 sm:pb-6 border-b-2 border-neutral-200">
+            <h1 class="mb-4 text-3xl sm:text-4xl font-extrabold">{{ title }}</h1>
+            <p class="text-lg text-gray-500">{{ titleDescription }}</p>
         </header>
         <div>
             <ol class="relative border-l border-gray-200 dark:border-gray-700">
@@ -24,7 +23,7 @@ const actionButton = 'Read';
                         ></div>
                         <time
                             class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-                        >{{ item.dateCreated }}</time>
+                        >{{ dateToString(item.dateCreated) }}</time>
                         <h3
                             class="text-lg font-semibold text-gray-900 dark:text-white"
                         >{{ item.title }}</h3>
