@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 import Home from '@/views/Home.vue';
 import NotFound from '@/views/NotFound.vue';
@@ -7,7 +7,7 @@ import NotFound from '@/views/NotFound.vue';
  * Currently researching on when and not to lazy load page views.
  */
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "Home",
