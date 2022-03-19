@@ -1,8 +1,15 @@
 <script setup lang="ts">
+import { RouteRecordName } from 'vue-router';
+
+interface Props {
+    subPage?: RouteRecordName | null;
+    currentPage: string;
+}
+const props = defineProps<Props>();
+
 </script>
 
 <template>
-    <!-- Breadcrumb -->
     <nav
         class="flex py-3 px-5 text-gray-700 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Breadcrumb"
@@ -43,7 +50,7 @@
                     <router-link
                         :to="{ name: 'Home' }"
                         class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white"
-                    >Blog</router-link>
+                    >{{ props.subPage }}</router-link>
                 </div>
             </li>
             <li aria-current="page">
@@ -62,7 +69,7 @@
                     </svg>
                     <span
                         class="ml-1 text-sm font-medium text-gray-400 md:ml-2 dark:text-gray-500"
-                    >Title Here</span>
+                    >{{ props.currentPage }}</span>
                 </div>
             </li>
         </ol>
