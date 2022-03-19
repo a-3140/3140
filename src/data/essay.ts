@@ -1,4 +1,4 @@
-interface Blog {
+interface Contents {
   id: string;
   title: string;
   dateCreated: Date;
@@ -6,10 +6,10 @@ interface Blog {
   content: string;
 }
 
-export const data: Blog[] = [
+export const data: Contents[] = [
   {
     id: "001",
-    title: "When to use and not to use lazy loading",
+    title: "This is an essay",
     dateCreated: new Date("March 14, 2022"),
     description:
       "We should start with the question: What is lazy loading? Then, how does it work? How do we use it for optimization?",

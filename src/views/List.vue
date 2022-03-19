@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { data } from '@/data/data'
+import { data } from '@/data/blog'
 import { dateToString } from '@/helpers/date'
+import { pages } from '@/helpers/pages'
+import { RouteParams, useRouter } from 'vue-router';
 
-const title = 'Blog';
-const actionButton = 'Read';
-const titleDescription = 'Recent blogs and researches regarding tech topics.';
-
+const params: RouteParams = useRouter().currentRoute.value.params;
+const page = pages.filter(page => page.title === params.title)[0];
 </script>
 
 <template>
     <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
         <header class="pt-16 mb-6 pb-2 sm:mb-10 sm:pb-6 border-b-2 border-neutral-200">
-            <h1 class="mb-4 text-3xl sm:text-4xl font-extrabold">{{ title }}</h1>
-            <p class="text-lg text-gray-500">{{ titleDescription }}</p>
+            <h1 class="mb-4 text-3xl sm:text-4xl font-extrabold">{{ params.title }}</h1>
+            <p class="text-lg text-gray-500">{{ page.description }}</p>
         </header>
         <div>
             <ol class="relative border-l border-gray-200 dark:border-gray-700">
@@ -34,7 +34,7 @@ const titleDescription = 'Recent blogs and researches regarding tech topics.';
                             :to="{ name: 'Blog', params: { id: item.id } }"
                             class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                         >
-                            {{ actionButton }}
+                            Read
                             <svg
                                 class="ml-2 w-3 h-3"
                                 fill="currentColor"

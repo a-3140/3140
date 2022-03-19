@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router';
 import BreadCrumb from '@/components/blog/Breadcrumb.vue'
 import NotFound from '@/views/NotFound.vue'
-import { data } from '@/data/data'
+import { data } from '@/data/blog'
 
 const { id } = useRouter().currentRoute.value.params;
 const name = useRouter().currentRoute.value.name;
