@@ -3,7 +3,7 @@ import { RouteRecordName } from 'vue-router';
 
 interface Props {
     subPage?: RouteRecordName | null;
-    currentPage: string;
+    currentPage: String;
 }
 const props = defineProps<Props>();
 
