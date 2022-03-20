@@ -9,7 +9,7 @@ import work from '@/assets/work.jpg'
                 class="relative z-10 py-2 bg-white sm:py-16 md:py-20 lg:max-w-2xl lg:w-full lg:py-28 xl:py-32"
             >
                 <main
-                    class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28"
+                    class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 animate-fade-in-left"
                 >
                     <div class="sm:text-center lg:text-left">
                         <h1
@@ -26,7 +26,10 @@ import work from '@/assets/work.jpg'
             </div>
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" :src="work" />
+            <img
+                class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full animate-fade-in-right"
+                :src="work"
+            />
         </div>
     </div>
 </template>

@@ -11,11 +11,13 @@ const page = pages.filter(page => page.title === params.title)[0];
 <template>
     <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
         <header class="pt-16 mb-6 pb-2 sm:mb-10 sm:pb-6 border-b-2 border-neutral-200">
-            <h1 class="mb-4 text-3xl sm:text-4xl font-extrabold">{{ params.title }}</h1>
-            <p class="text-lg text-gray-500">{{ page.description }}</p>
+            <h1
+                class="mb-4 text-3xl sm:text-4xl font-extrabold animate-fade-in-down"
+            >{{ params.title }}</h1>
+            <p class="text-lg text-gray-500 animate-fade-in-down">{{ page.description }}</p>
         </header>
         <div>
-            <ol class="relative border-l border-gray-200 dark:border-gray-700">
+            <ol class="relative border-l border-gray-200 dark:border-gray-700 animate-fade-in-up">
                 <div v-for="item in data">
                     <li class="mb-10 ml-4">
                         <div
