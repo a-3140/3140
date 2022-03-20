@@ -9,7 +9,7 @@ const page = pages.filter(page => page.title === params.title)[0];
 </script>
 
 <template>
-    <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
+    <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl bg-white/80">
         <header class="pt-16 mb-6 pb-2 sm:mb-10 sm:pb-6 border-b-2 border-neutral-200">
             <h1
                 class="mb-4 text-3xl sm:text-4xl font-extrabold animate-fade-in-down"
