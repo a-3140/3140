@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import BreadCrumb from '@/components/blog/Breadcrumb.vue'
 import NotFound from '@/views/NotFound.vue'
 import { data } from '@/data/blog'
+import flowchart from '@/assets/flowchart.svg'
 
 const { id } = useRouter().currentRoute.value.params;
 const name = useRouter().currentRoute.value.name;
@@ -13,7 +14,11 @@ const moldedData = {
     title: content.title,
     category: content.category.toUpperCase(),
     content: content.content,
+    img: content.img
 }
+
+// TODO: will create a db for these images in the future for image urls
+
 </script>
 
 <template>
@@ -31,6 +36,7 @@ const moldedData = {
                         v-html="moldedData.content"
                         class="text-gray-500 text-left leading-8 font-light"
                     />
+                    <img :src="flowchart" class="w-full" />
                 </div>
             </div>
 

@@ -1,10 +1,11 @@
 interface Contents {
-  id: String;
-  title: String;
+  id: string;
+  title: string;
   dateCreated: Date;
-  category: String;
-  description: String;
-  content: String;
+  category: string;
+  description: string;
+  content: string;
+  img: string;
 }
 
 export const data: Contents[] = [
@@ -28,7 +29,7 @@ export const data: Contents[] = [
     </ul>
 
     Example:
-    <img src="/assets/flowchart.svg" class="w-full" />
     `,
+    img: "/src/assets/flowchart.svg",
   },
 ];
