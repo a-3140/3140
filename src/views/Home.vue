@@ -4,12 +4,12 @@ import work from '@/assets/work.jpg'
 
 <template>
     <div class="relative bg-white overflow-hidden fullscreen">
-        <div class="w-1/2 mx-auto">
+        <div class="lg:w-1/2 mx-auto">
             <div
-                class="relative z-10 py-2 bg-white sm:py-16 md:py-20 lg:max-w-2xl lg:w-full lg:py-28 xl:py-32"
+                class="grid place-content-center half-screen relative z-10 py-10 bg-white sm:py-16 md:py-20 lg:max-w-2xl lg:w-full lg:py-28 xl:py-32"
             >
                 <main
-                    class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 animate-fade-in-left"
+                    class="mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 animate-fade-in-left"
                 >
                     <div class="sm:text-center lg:text-left">
                         <h1
@@ -27,7 +27,7 @@ import work from '@/assets/work.jpg'
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <img
-                class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full animate-fade-in-right"
+                class="half-screen w-full object-cover md:h-100 lg:w-full lg:h-full animate-fade-in-right"
                 :src="work"
             />
         </div>
@@ -37,5 +37,10 @@ import work from '@/assets/work.jpg'
 <style scoped>
 .fullscreen {
     min-height: calc(100vh - 68px);
+}
+@media (max-width: 640px) {
+    .half-screen {
+        height: calc(50vh - 40px);
+    }
 }
 </style>
