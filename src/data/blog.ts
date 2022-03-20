@@ -28,7 +28,7 @@ export const data: Contents[] = [
     </ul>
 
     Example:
-    <img src="/src/assets/flowchart.svg" class="w-full" />
+    <img src="/assets/flowchart.svg" class="w-full" />
     `,
   },
 ];
