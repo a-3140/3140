@@ -23,7 +23,7 @@ const routes: RouteRecordRaw[] = [
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   {
     path: "/blog/:id",
-    name: "Blog",
+    name: "blogs",
     component: Blog,
   },
 ];
