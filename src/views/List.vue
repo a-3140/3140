@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { pages } from '@/helpers/pages'
-import { dateToString } from '@/helpers/date'
-import { RouteParams, useRouter } from 'vue-router';
 import { queryBlogs } from '@/firebase';
+import { RouteParams, useRouter } from 'vue-router';
 
 // TODO: PAGINATE
 const blogs: any = queryBlogs.docs.map((doc) => ({
@@ -28,7 +27,7 @@ const page = pages.filter(page => page.title === routeParams.title)[0];
                             class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
                         </div>
                         <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Edited: {{
-                            dateToString(item.lastEdited.toDate())
+                            item.lastEdited
                         }}</time>
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ item.title }}</h3>
                         <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{{ item.description }}
