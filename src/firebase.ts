@@ -1,6 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { collection, doc, getDoc, getDocs, getFirestore } from 'firebase/firestore';
 
+import { dateToString } from '@/helpers/date';
+
 const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -18,6 +20,37 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export const queryBlogs = await getDocs(collection(db, "blogs"));
+// TODO: CHECK FOR BETTER STRUCTURE
+
+export const fetchBlogSummaries = async (): Promise<BlogSummary[]> => {
+  let data: BlogSummary[] = [];
+
+  const querySnapshot = await getDocs(collection(db, "blogs"));
+
+  querySnapshot.forEach((doc) => {
+    const { lastEdited, title, description } = doc.data();
+    data.push({
+      id: doc.id,
+      lastEdited: dateToString(lastEdited.toDate()),
+      title: title,
+      description: description,
+    });
+  });
+
+  return data;
+};
+
+// * TYPES
+// TODO: Move to its own file
+interface Blog {
+  id: string;
+  lastEdited: any;
+  title: string;
+  description: string;
+  content: string;
+}
+
+type BlogSummary = Pick<Blog, "id" | "lastEdited" | "title" | "description">;
 
 export const getBlog = async (docId: string) => {
   return getDoc(doc(db, "blogs", docId)).then((snapshot) => {

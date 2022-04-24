@@ -1,7 +1,7 @@
 <script lang="ts">
-import Header from '@/components/layout/Header.vue';
-import { defineComponent } from 'vue';
 import bg from '@/assets/bg.jpg';
+import { defineComponent } from 'vue';
+import Header from '@/components/layout/Header.vue';
 
 export default defineComponent({
     components: { Header },
@@ -28,12 +28,14 @@ export default defineComponent({
 #content {
     display: flex;
 }
+
 #wrapper {
     min-height: calc(100vh - 68px);
     background-repeat: no-repeat;
     background-position: right;
     background-attachment: fixed;
 }
+
 .content-wrapper {
     min-height: calc(100vh - 68px);
 }

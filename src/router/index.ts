@@ -1,13 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-import Blog from '@/views/Blog.vue';
 import Home from '@/views/Home.vue';
-import List from '@/views/List.vue';
 import NotFound from '@/views/NotFound.vue';
+import Detail from '@/views/tech/Detail.vue';
+import TechBlogList from '@/views/tech/TechBlogList.vue';
 
-/*
- * Currently researching on when and not to lazy load page views.
- */
+// * Currently researching on when and not to lazy load page views.
 
 const routes: RouteRecordRaw[] = [
   {
@@ -16,16 +14,21 @@ const routes: RouteRecordRaw[] = [
     component: Home,
   },
   {
-    path: "/:title",
-    name: "ListView",
-    component: List,
+    path: "/tech",
+    name: "BlogList",
+    component: TechBlogList,
+    meta: {
+      title: "Tech",
+      layout: "PageCollections",
+      description: "Recent blogs and researches regarding tech topics.",
+    },
   },
-  { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   {
     path: "/blog/:id",
     name: "blogs",
-    component: Blog,
+    component: Detail,
   },
+  { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];
 
 const router = createRouter({

@@ -1,21 +1,22 @@
 <script lang="ts">
-import AppLayoutDefault from './Default.vue'
-import { defineComponent, markRaw, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import LayoutDefault from './Default.vue'
+import { defineComponent, markRaw, shallowRef, watch } from 'vue'
 
 export default defineComponent({
     name: 'AppLayout',
     setup() {
-        const layout = markRaw(AppLayoutDefault)
         const route = useRoute()
+        const layout = shallowRef(LayoutDefault)
+
         watch(
-            () => route.meta,
-            async meta => {
+            () => route.meta?.layout as string | undefined,
+            async metaLayout => {
                 try {
-                    const component = await import(/* @vite-ignore */ `@/layouts/${meta.layout}.vue`)
-                    layout.value = component?.default || AppLayoutDefault
+                    const component = await import( /* @vite-ignore */ `./${metaLayout}.vue`)
+                    layout.value = markRaw(component?.default || LayoutDefault)
                 } catch (e) {
-                    layout.value = AppLayoutDefault
+                    layout.value = markRaw(LayoutDefault)
                 }
             },
             { immediate: true }
