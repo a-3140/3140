@@ -1,23 +1,31 @@
-<script setup lang="ts">
-import { pages } from '@/helpers/pages'
+<script lang="ts">
 import { queryBlogs } from '@/firebase';
-import { RouteParams, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
+import { defineComponent } from 'vue';
 
-// TODO: PAGINATE
-const blogs: any = queryBlogs.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-}));
+export default defineComponent({
+    setup() {
+        const route = useRoute();
 
-const routeParams: RouteParams = useRouter().currentRoute.value.params;
-const page = pages.filter(page => page.title === routeParams.title)[0];
+        const blogs: any = queryBlogs.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
+        const title = route.params.title
+
+        return {
+            blogs: blogs,
+            title: title,
+        }
+    },
+})
 </script>
 
 <template>
     <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl bg-white/80">
         <header class="pt-16 mb-6 pb-2 sm:mb-10 sm:pb-6 border-b-2 border-neutral-200">
-            <h1 class="mb-4 text-3xl sm:text-4xl font-extrabold animate-fade-in-down">{{ routeParams.title }}</h1>
-            <p class="text-lg text-gray-500 animate-fade-in-down">{{ page.description }}</p>
+            <h1 class="mb-4 text-3xl sm:text-4xl font-extrabold animate-fade-in-down">{{ title }}</h1>
+            <!-- <p class="text-lg text-gray-500 animate-fade-in-down">{{ page.description }}</p> -->
         </header>
         <div>
             <ol class="relative border-l border-gray-200 dark:border-gray-700 animate-fade-in-up">
