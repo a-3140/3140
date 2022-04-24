@@ -1,32 +1,34 @@
 <script lang="ts">
-import { queryBlogs } from '@/firebase';
 import { useRoute } from 'vue-router';
 import { defineComponent } from 'vue';
+import { queryBlogs } from '@/firebase';
+import Header from '@/components/articles/ArticleHeader.vue';
+import { getDescriptionFromRouterTitle } from '@/helpers/pages';
 
 export default defineComponent({
+    components: { Header },
     setup() {
         const route = useRoute();
+        const title = route.params.title;
+        const description = getDescriptionFromRouterTitle(title)
 
         const blogs: any = queryBlogs.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
         }));
-        const title = route.params.title
 
         return {
-            blogs: blogs,
-            title: title,
-        }
+            blogs,
+            title,
+            description,
+        };
     },
 })
 </script>
 
 <template>
     <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl bg-white/80">
-        <header class="pt-16 mb-6 pb-2 sm:mb-10 sm:pb-6 border-b-2 border-neutral-200">
-            <h1 class="mb-4 text-3xl sm:text-4xl font-extrabold animate-fade-in-down">{{ title }}</h1>
-            <!-- <p class="text-lg text-gray-500 animate-fade-in-down">{{ page.description }}</p> -->
-        </header>
+        <Header :title="title" :description="description" />
         <div>
             <ol class="relative border-l border-gray-200 dark:border-gray-700 animate-fade-in-up">
                 <div v-for="item in blogs">
@@ -35,7 +37,7 @@ export default defineComponent({
                             class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
                         </div>
                         <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Edited: {{
-                            item.lastEdited
+                                item.lastEdited
                         }}</time>
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ item.title }}</h3>
                         <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{{ item.description }}
