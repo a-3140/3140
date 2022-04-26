@@ -50,7 +50,10 @@ interface Blog {
   content: string;
 }
 
-type BlogSummary = Pick<Blog, "id" | "lastEdited" | "title" | "description">;
+export type BlogSummary = Pick<
+  Blog,
+  "id" | "lastEdited" | "title" | "description"
+>;
 
 export const getBlog = async (docId: string) => {
   return getDoc(doc(db, "blogs", docId)).then((snapshot) => {
