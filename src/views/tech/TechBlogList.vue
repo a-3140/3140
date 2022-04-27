@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import ArticleList from '@/components/articles/List.vue';
 import Spinner from '@/components/loaders/Spinner.vue'
+import { onErrorCaptured } from 'vue';
+
+onErrorCaptured(err => {
+    console.log('Error:', err)
+    return true;
+})
 
 </script>
 
