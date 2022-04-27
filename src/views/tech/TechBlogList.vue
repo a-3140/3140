@@ -1,17 +1,19 @@
-<script lang="ts">
-import List from '@/components/articles/List.vue';
-
-export default {
-    components: { List },
-}
+<script setup lang="ts">
+import ArticleList from '@/components/articles/List.vue';
+import Spinner from '@/components/loaders/Spinner.vue'
 
 </script>
 
 <template>
-    <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl bg-white/80">
+    <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl bg-white/80 animate-fade-in-up">
         <ol class="relative border-l border-gray-200 dark:border-gray-700 animate-fade-in-up">
             <suspense>
-                <List />
+                <template #default>
+                    <ArticleList />
+                </template>
+                <template #fallback>
+                    <Spinner />
+                </template>
             </suspense>
         </ol>
     </div>
