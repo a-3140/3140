@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import ArticleList from '@/components/articles/List.vue';
 import Spinner from '@/components/loaders/Spinner.vue'
-import { onErrorCaptured } from 'vue';
+import { defineAsyncComponent, } from 'vue';
 
-onErrorCaptured(err => {
-    console.log('Error:', err)
-    return true;
+const ArticleList = defineAsyncComponent({
+    loader: () => import('@/components/articles/List.vue'),
+    loadingComponent: Spinner,
+    suspensible: false,
 })
 
 </script>
