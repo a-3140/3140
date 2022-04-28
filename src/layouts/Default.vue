@@ -17,7 +17,7 @@ export default defineComponent({
 <template>
     <div id="wrapper" v-bind:style="{ 'background-image': image }">
         <Header />
-        <div class="mx-auto content-wrapper bg-white/90">
+        <div class="mx-auto content-wrapper bg-white/90 ">
             <slot />
         </div>
     </div>
