@@ -13,7 +13,7 @@ const description = route.meta.description;
 
 <template>
     <Default>
-        <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl bg-white/80">
+        <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl bg-white/80 page-collection">
             <ArticleHeader :title="title" :description="description" />
             <slot />
         </div>
@@ -22,4 +22,7 @@ const description = route.meta.description;
 
 
 <style>
+.page-collection {
+    min-height: calc(100vh - 68px);
+}
 </style>
