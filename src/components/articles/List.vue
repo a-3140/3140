@@ -1,22 +1,13 @@
-<script lang="ts">
-import { reactive } from 'vue';
-import { BlogSummary } from '@/firebase'
-import { fetchBlogSummaries } from '@/firebase';
+<script setup lang="ts">
+import { BlogSummary, fetchBlogSummaries } from '@/firebase';
 
-export default {
-    async setup() {
-        let blogs = reactive([] as BlogSummary[])
-        await fetchBlogSummaries().then((data) => {
-            blogs = data
-        });
+// TODO: Add animate on load
+const blogs: BlogSummary[] = await fetchBlogSummaries()
 
-        return { blogs }
-    }
-}
 </script>
 
 <template>
-    <div v-for="item in blogs">
+    <template v-for="item in blogs" :key="item.id">
         <li class="mb-10 ml-4">
             <div
                 class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
@@ -37,5 +28,5 @@ export default {
                 </svg>
             </router-link>
         </li>
-    </div>
+    </template>
 </template>
