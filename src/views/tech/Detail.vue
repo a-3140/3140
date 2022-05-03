@@ -33,7 +33,7 @@ const doc = await fetchArticleById(id as string)
 <template>
     <div class="mx-auto pt-4 bg-white/80">
         <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl text-center min-h-screen">
-            <bread-crumb :current-page="doc.title" :sub-page="name" />
+            <bread-crumb :current-page="doc?.title" :sub-page="name" />
 
             <div v-if="doc" class="container">
                 <div class="mt-8 max-w-5xl mx-auto pb-28 xl:max-w-6xl text-center">
