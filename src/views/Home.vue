@@ -1,35 +1,31 @@
 <script setup lang="ts">
-import work from '@/assets/work.jpg'
+import bg from '@/assets/bg.png';
 </script>
 
 <template>
-    <div class="relative bg-white overflow-hidden fullscreen">
-        <div class="lg:w-1/2 mx-auto">
-            <div
-                class="grid place-content-center half-screen relative z-10 py-10 bg-white sm:py-16 md:py-20 lg:max-w-2xl lg:w-full lg:py-28 xl:py-32"
-            >
-                <main
-                    class="mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 animate-fade-in-left"
-                >
-                    <div class="sm:text-center lg:text-left">
-                        <h1
-                            class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
-                        >
-                            <span class="block xl:inline">a.atienza &nbsp;</span>
-                            <span class="block text-red-500 xl:inline">3140</span>
-                        </h1>
-                        <p
-                            class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-                        >Currently working as a fulltime Fullstack Web Developer. I like writing/typing, reading and watching informational videos on my freetime.</p>
-                    </div>
-                </main>
-            </div>
-        </div>
-        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img
-                class="half-screen w-full object-cover md:h-100 lg:w-full lg:h-full animate-fade-in-right"
-                :src="work"
-            />
+    <div class="bg-black overflow-hidden fullscreen" id="home" v-bind:style="{ 'background-image': `url(${bg})` }">
+        <div class="md:pl-12 sm:pl-0 mt-0 bg-black/80 fullscreen relative">
+            <main class="px-10 sm:pt-12 md:pt-16 lg:pt-20 lg:px-8 xl:pt-28 absolute top-40 md:left-10 sm:left-0">
+                <div class="sm:text-center lg:text-left">
+                    <h1 class="text-6xl font-extrabold md:text-8xl animate-fade-in-down">
+                        <span class="block text-blue-500">a.atienza &nbsp;</span>
+                        <span class="block text-red-500 ">3140</span>
+                    </h1>
+                    <p
+                        class="mt-4 text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 animate-fade-in-right">
+                        Web Development |
+                        Learning |
+                        Reading |
+                        Essays |
+                        More
+                    </p>
+                    <p
+                        class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 animate-fade-in-up">
+                        Currently working as a fulltime Fullstack Web Developer. I like writing/typing, reading and
+                        watching informational videos on my freetime.
+                    </p>
+                </div>
+            </main>
         </div>
     </div>
 </template>
@@ -38,9 +34,11 @@ import work from '@/assets/work.jpg'
 .fullscreen {
     min-height: calc(100vh - 68px);
 }
-@media (max-width: 640px) {
-    .half-screen {
-        height: calc(50vh - 40px);
-    }
+
+#home {
+    min-height: calc(100vh - 68px);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment: fixed;
 }
 </style>

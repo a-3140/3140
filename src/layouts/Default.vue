@@ -1,5 +1,5 @@
 <script lang="ts">
-import bg from '@/assets/bg.jpg';
+import bg from '@/assets/bg.png';
 import { defineComponent } from 'vue';
 import Header from '@/components/layout/Header.vue';
 
@@ -15,9 +15,9 @@ export default defineComponent({
 </script>
 
 <template>
-    <div id="wrapper" v-bind:style="{ 'background-image': image }">
+    <div class="bg-black overflow-hidden fullscreen" id="wrapper" v-bind:style="{ 'background-image': image }">
         <Header />
-        <div class="mx-auto content-wrapper bg-white/90 ">
+        <div class="mx-auto content-wrapper bg-black/80">
             <slot />
         </div>
     </div>

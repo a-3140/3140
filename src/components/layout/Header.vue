@@ -7,7 +7,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <nav class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-black text-white">
+    <nav class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-gray-800 text-white">
         <div class="container flex flex-wrap justify-between items-center mx-auto xl:max-w-6xl">
             <router-link :to="{ name: 'Home' }" class="flex items-center">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">3140</span>

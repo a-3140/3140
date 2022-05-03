@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { collection, doc, getDoc, getDocs, getFirestore } from 'firebase/firestore';
+import { collection, doc, DocumentData, getDoc, getDocs, getFirestore } from 'firebase/firestore';
 
 import { dateToString } from '@/helpers/date';
 
@@ -40,9 +40,17 @@ export const fetchBlogSummaries = async (): Promise<BlogSummary[]> => {
   return data;
 };
 
+export const fetchArticleById = async (
+  id: string
+): Promise<DocumentData | Blog | undefined> => {
+  return getDoc(doc(db, "blogs", id)).then((snapshot) => {
+    return snapshot.data();
+  });
+};
+
 // * TYPES
 // TODO: Move to its own file
-interface Blog {
+export interface Blog {
   id: string;
   lastEdited: any;
   title: string;
