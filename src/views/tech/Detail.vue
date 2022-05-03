@@ -12,7 +12,7 @@ const Article = defineAsyncComponent({
     // TODO: Add an errorComponent
     suspensible: false,
     loadingComponent: Spinner,
-    loader: () => import('@/components/articles/Article.vue'),
+    loader: () => import('../../components/articles/Article.vue'),
     onError: (error, retry, fail, attempts) => {
         if (attempts <= 3) {
             console.log('Error', error);

@@ -1,15 +1,37 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { BlogSummary, fetchBlogSummaries } from '@/firebase';
+import gsap from 'gsap';
 
-// TODO: Add animate on load
-const blogs: BlogSummary[] = await fetchBlogSummaries()
+const blogs = ref([] as BlogSummary[]);
+
+await fetchBlogSummaries().then(data => {
+    blogs.value = data
+})
+
+function onEnter(el: any, done: gsap.Callback) {
+    gsap.to(el, {
+        opacity: 1,
+        delay: el.dataset.index * 0.15,
+        x: '0px',
+        onComplete: done,
+    })
+}
+function onBeforeEnter(el: any) {
+    gsap.from(el, {
+        opacity: 0,
+        x: '2em',
+        delay: el.dataset.index * 0.15,
+    })
+}
 
 </script>
 
 <template>
-    <template v-for="item in blogs" :key="item.id">
-        <li class="mb-10 ml-4">
-            <div class="absolute w-3 h-3  rounded-full -left-1.5 border border-white dark:border-gray-900">
+    <TransitionGroup :css="false" @before-enter="onBeforeEnter" @enter="onEnter" name="list" tag="ul"
+        class="relative border-l border-gray-200" appear>
+        <li v-for="(item, index) in blogs" :key="item.id" class="mb-10 ml-4" :data-index="index">
+            <div class="absolute w-3.5 h-3.5  rounded-full -left-6 border border-white dark:border-gray-900">
             </div>
             <time class="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-500">Edited: {{
                     item.lastEdited
@@ -27,5 +49,9 @@ const blogs: BlogSummary[] = await fetchBlogSummaries()
                 </svg>
             </router-link>
         </li>
-    </template>
+
+    </TransitionGroup>
 </template>
+
+<style scoped>
+</style>
