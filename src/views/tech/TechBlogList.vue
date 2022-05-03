@@ -6,7 +6,7 @@ const ArticleList = defineAsyncComponent({
     // TODO: Add an errorComponent
     suspensible: false,
     loadingComponent: LoadingArticle,
-    loader: () => import('@/components/articles/List.vue'),
+    loader: () => import('../../components/articles/List.vue'),
     onError: (error, retry, fail, attempts) => {
         if (attempts <= 3) {
             console.log('Error', error);
