@@ -5,15 +5,10 @@ import Detail from '@/views/tech/Detail.vue';
 
 import Collections from '../layouts/types/Collections.vue';
 
-export enum LAYOUTS {
-  "DEFAULT" = "Default",
-  "COLLECTIONS" = "Collections",
-}
-
 // * Lazyload
 // TODO: Improve and organize naming
-const TechBlogList = import("@/views/tech/TechBlogList.vue");
-const NotFound = import("@/views/NotFound.vue");
+const TechBlogList = () => import("@/views/tech/TechBlogList.vue");
+const NotFound = () => import("@/views/NotFound.vue");
 
 const routes: RouteRecordRaw[] = [
   {
@@ -33,7 +28,7 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/blog/:id",
-    name: "blogs",
+    name: "Tech",
     component: Detail,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },

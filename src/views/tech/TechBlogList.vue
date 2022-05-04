@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import NotFound from '@/views/NotFound.vue'
 import { defineAsyncComponent, } from 'vue';
 import LoadingArticle from '@/components/loaders/LoadingArticle.vue';
 
 const ArticleList = defineAsyncComponent({
-    // TODO: Add an errorComponent
     suspensible: false,
+    errorComponent: NotFound,
     loadingComponent: LoadingArticle,
     loader: () => import('../../components/articles/List.vue'),
     onError: (error, retry, fail, attempts) => {
