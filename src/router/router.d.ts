@@ -5,9 +5,14 @@ export {};
 
 import 'vue-router';
 
+export enum LAYOUTS {
+  "DEFAULT" = "Default",
+  "COLLECTIONS" = "Collections",
+}
+
 declare module "vue-router" {
   interface RouteMeta {
-    layout: string;
+    layout: LAYOUTS;
     title: string;
     description: string;
   }

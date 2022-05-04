@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import bg from '@/assets/bg.png';
-import Header from '@/components/layout/Header.vue';
+import Header from '../components/layout/Header.vue';
 
 const image = `url(${bg})`
 
@@ -10,7 +10,7 @@ const image = `url(${bg})`
     <div class="bg-black overflow-hidden fullscreen" id="wrapper" v-bind:style="{ 'background-image': image }">
         <Header />
         <div class="mx-auto content-wrapper bg-black/80">
-            <slot />
+            <slot></slot>
         </div>
     </div>
 </template>

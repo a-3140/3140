@@ -10,7 +10,7 @@ export default defineComponent({
         const layout = shallowRef(LayoutDefault)
 
         watch(
-            () => route.meta?.layout as string | undefined,
+            () => route.meta?.layout,
             async metaLayout => {
                 try {
                     const component = await import( /* @vite-ignore */ `./${metaLayout || './Default'}.vue`)

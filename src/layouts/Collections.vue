@@ -2,7 +2,7 @@
 
 import { useRoute } from 'vue-router';
 import BaseLayout from './BaseLayout.vue';
-import ArticleHeader from '@/components/articles/ArticleHeader.vue';
+import ArticleHeader from '../components/articles/ArticleHeader.vue';
 
 const route = useRoute()
 
@@ -12,12 +12,13 @@ const description = route.meta.description;
 </script>
 
 <template>
-    <BaseLayout>
+    <base-layout>
         <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl page-collection">
-            <ArticleHeader :title="title" :description="description" />
-            <slot />
+            <article-header :title="title" :description="description">
+            </article-header>
+            <slot></slot>
         </div>
-    </BaseLayout>
+    </base-layout>
 </template>
 
 

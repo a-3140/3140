@@ -5,6 +5,8 @@ import NotFound from '@/views/NotFound.vue';
 import Detail from '@/views/tech/Detail.vue';
 import TechBlogList from '@/views/tech/TechBlogList.vue';
 
+import { LAYOUTS } from './router';
+
 // * Currently researching on when and not to lazy load page views.
 
 const routes: RouteRecordRaw[] = [
@@ -19,7 +21,7 @@ const routes: RouteRecordRaw[] = [
     component: TechBlogList,
     meta: {
       title: "Tech",
-      layout: "PageCollections",
+      layout: LAYOUTS.COLLECTIONS,
       description: "Recent blogs and researches regarding tech topics.",
     },
   },
