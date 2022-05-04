@@ -17,7 +17,6 @@ await fetchArticleById(id as string).then(data => {
 function onEnter(el: any, done: gsap.Callback) {
     gsap.to(el, {
         opacity: 1,
-        delay: el.dataset.index * 0.15,
         y: '0px',
         onComplete: done,
     })
@@ -26,7 +25,6 @@ function onBeforeEnter(el: any) {
     gsap.from(el, {
         opacity: 0,
         y: '2em',
-        delay: el.dataset.index * 0.15,
     })
 }
 </script>
