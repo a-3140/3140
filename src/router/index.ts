@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 import Home from '@/views/Home.vue';
-import NotFound from '@/views/NotFound.vue';
 import Detail from '@/views/tech/Detail.vue';
-import TechBlogList from '@/views/tech/TechBlogList.vue';
 
 import Collections from '../layouts/types/Collections.vue';
 
@@ -12,7 +10,10 @@ export enum LAYOUTS {
   "COLLECTIONS" = "Collections",
 }
 
-// * Currently researching on when and not to lazy load page views.
+// * Lazyload
+// TODO: Improve and organize naming
+const TechBlogList = import("@/views/tech/TechBlogList.vue");
+const NotFound = import("@/views/NotFound.vue");
 
 const routes: RouteRecordRaw[] = [
   {
