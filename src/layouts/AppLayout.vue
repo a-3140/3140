@@ -13,8 +13,8 @@ export default defineComponent({
             () => route.meta?.layout,
             async metaLayout => {
                 try {
-                    const layoutDir = '@/layouts/types/'
-                    const component = await import( /* @vite-ignore */ `${layoutDir}${metaLayout || `${layoutDir}Default`}.vue`)
+                    const layoutDir = './types'
+                    const component = await import( /* @vite-ignore */ `${layoutDir}/${metaLayout || `./Default`}.vue`)
                     layout.value = markRaw(component?.default || LayoutDefault)
                 } catch (e) {
                     layout.value = markRaw(LayoutDefault)

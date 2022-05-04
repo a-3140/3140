@@ -14,3 +14,6 @@ const props = defineProps<Props>();
         <p class="text-lg text-gray-300 animate-fade-in-down">{{ props.description }}</p>
     </header>
 </template>
+
+<style>
+</style>
