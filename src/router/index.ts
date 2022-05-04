@@ -5,6 +5,8 @@ import NotFound from '@/views/NotFound.vue';
 import Detail from '@/views/tech/Detail.vue';
 import TechBlogList from '@/views/tech/TechBlogList.vue';
 
+import Collections from '../layouts/types/Collections.vue';
+
 export enum LAYOUTS {
   "DEFAULT" = "Default",
   "COLLECTIONS" = "Collections",
@@ -24,7 +26,7 @@ const routes: RouteRecordRaw[] = [
     component: TechBlogList,
     meta: {
       title: "Tech",
-      layout: LAYOUTS.COLLECTIONS,
+      layout: Collections,
       description: "Recent blogs and researches regarding tech topics.",
     },
   },

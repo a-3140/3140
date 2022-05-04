@@ -5,11 +5,11 @@ export {};
 
 import 'vue-router';
 
-import { LAYOUTS } from './index';
+import { Component } from 'vue';
 
 declare module "vue-router" {
   interface RouteMeta {
-    layout: LAYOUTS;
+    layout: Component;
     title: string;
     description: string;
   }
