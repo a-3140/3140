@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import { useRoute } from 'vue-router';
-import BaseLayout from './BaseLayout.vue';
-import ArticleHeader from '../components/articles/ArticleHeader.vue';
+import BaseLayout from '@/layouts/base/BaseLayout.vue';
+import ArticleHeader from '../../components/articles/ArticleHeader.vue';
 
 const route = useRoute()
 

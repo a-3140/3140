@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useRoute } from 'vue-router'
-import LayoutDefault from './Default.vue'
+import LayoutDefault from '@/layouts/types/Default.vue'
 import { defineComponent, markRaw, shallowRef, watch } from 'vue'
 
 export default defineComponent({
@@ -13,7 +13,8 @@ export default defineComponent({
             () => route.meta?.layout,
             async metaLayout => {
                 try {
-                    const component = await import( /* @vite-ignore */ `./${metaLayout || './Default'}.vue`)
+                    const layoutDir = '@/layouts/types/'
+                    const component = await import( /* @vite-ignore */ `${layoutDir}${metaLayout || `${layoutDir}Default`}.vue`)
                     layout.value = markRaw(component?.default || LayoutDefault)
                 } catch (e) {
                     layout.value = markRaw(LayoutDefault)

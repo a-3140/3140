@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import bg from '@/assets/bg.png';
-import Header from '../components/layout/Header.vue';
+import Header from '@/components/layout/Header.vue';
 
 const image = `url(${bg})`
 

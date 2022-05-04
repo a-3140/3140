@@ -5,7 +5,10 @@ import NotFound from '@/views/NotFound.vue';
 import Detail from '@/views/tech/Detail.vue';
 import TechBlogList from '@/views/tech/TechBlogList.vue';
 
-import { LAYOUTS } from './router';
+export enum LAYOUTS {
+  "DEFAULT" = "Default",
+  "COLLECTIONS" = "Collections",
+}
 
 // * Currently researching on when and not to lazy load page views.
 

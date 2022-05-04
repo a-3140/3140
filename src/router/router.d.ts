@@ -5,10 +5,7 @@ export {};
 
 import 'vue-router';
 
-export enum LAYOUTS {
-  "DEFAULT" = "Default",
-  "COLLECTIONS" = "Collections",
-}
+import { LAYOUTS } from './index';
 
 declare module "vue-router" {
   interface RouteMeta {
