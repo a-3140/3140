@@ -18,7 +18,7 @@ await getImageSrc(doc.value?.img, articleImgTag)
 
 <template>
     <Transition :css="false" @before-enter="FadeUp.onBeforeEnter" @enter="FadeUp.onEnter" tag="div" appear>
-        <div>
+        <div class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
             <bread-crumb :current-page="doc?.title" :sub-page="name" />
 
             <div class="container">
