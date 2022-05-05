@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { collection, doc, DocumentData, getDoc, getDocs, getFirestore } from 'firebase/firestore';
+import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 
 import { dateToString } from '@/helpers/date';
 
@@ -16,8 +17,29 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
+const storage = getStorage(app);
+
+export const getImageSrc = (fileName: string, elementId: string): void => {
+  const pathReference = ref(storage, fileName);
+
+  getDownloadURL(pathReference)
+    .then((url) => {
+      const img = document.getElementById(elementId);
+      img?.classList.toggle("hidden");
+      img?.setAttribute("src", url);
+    })
+    .catch((error) => {
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case "storage/object-not-found":
+          break;
+        case "storage/unknown":
+          break;
+      }
+    });
+};
 
 export const queryBlogs = await getDocs(collection(db, "blogs"));
 // TODO: CHECK FOR BETTER STRUCTURE
@@ -52,10 +74,11 @@ export const fetchArticleById = async (
 // TODO: Move to its own file
 export interface Blog {
   id: string;
-  lastEdited: any;
+  img: string;
   title: string;
-  description: string;
+  lastEdited: any;
   content: string;
+  description: string;
 }
 
 export type BlogSummary = Pick<
