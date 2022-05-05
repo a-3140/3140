@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import { useRouter } from 'vue-router';
-import flowchart from '@/assets/flowchart.svg'
-import { Blog, fetchArticleById } from '@/firebase';
+import { Blog, fetchArticleById, getImageSrc } from '@/firebase';
 import BreadCrumb from '@/components/articles/Breadcrumb.vue'
 import { ref } from 'vue';
 import { DocumentData } from 'firebase/firestore';
@@ -14,6 +13,10 @@ const { id } = useRouter().currentRoute.value.params;
 await fetchArticleById(id as string).then(data => {
     doc.value = data
 })
+
+const articleImgTag = "articleImg"
+getImageSrc(doc.value?.img, articleImgTag)
+
 function onEnter(el: any, done: gsap.Callback) {
     gsap.to(el, {
         opacity: 1,
@@ -39,7 +42,7 @@ function onBeforeEnter(el: any) {
                     <!-- <div class="text-xl font-normal mb-1 text-red-500">{{ moldedData.category }}</div> -->
                     <h1 class="text-3xl text-gray-50 font-bold mb-4">{{ doc?.title }}</h1>
                     <div v-html="doc?.content" class="text-gray-200 text-left leading-8 font-light" />
-                    <img :src="flowchart" class="w-full" />
+                    <img :id="articleImgTag" class="w-full hidden" />
                 </div>
             </div>
 
