@@ -20,7 +20,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-export const getImageSrc = (fileName: string, elementId: string): void => {
+export const getImageSrc = async (
+  fileName: string,
+  elementId: string
+): Promise<void> => {
   const pathReference = ref(storage, fileName);
 
   getDownloadURL(pathReference)

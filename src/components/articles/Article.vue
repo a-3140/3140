@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import gsap from 'gsap';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { FadeUp } from '@/common/animation'
 import { DocumentData } from 'firebase/firestore';
 import BreadCrumb from '@/components/articles/Breadcrumb.vue'
 import { Blog, fetchArticleById, getImageSrc } from '@/firebase';
@@ -10,30 +10,14 @@ const name = useRouter().currentRoute.value.name;
 const { id } = useRouter().currentRoute.value.params;
 const doc = ref({} as DocumentData | Blog | undefined);
 
-await fetchArticleById(id as string).then(data => {
-    doc.value = data
-})
+await fetchArticleById(id as string).then(data => { doc.value = data })
 
 const articleImgTag = "articleImg"
-getImageSrc(doc.value?.img, articleImgTag)
-
-function onEnter(el: any, done: gsap.Callback) {
-    gsap.to(el, {
-        opacity: 1,
-        y: '0px',
-        onComplete: done,
-    })
-}
-function onBeforeEnter(el: any) {
-    gsap.from(el, {
-        opacity: 0,
-        y: '2em',
-    })
-}
+await getImageSrc(doc.value?.img, articleImgTag)
 </script>
 
 <template>
-    <Transition :css="false" @before-enter="onBeforeEnter" @enter="onEnter" tag="div" appear>
+    <Transition :css="false" @before-enter="FadeUp.onBeforeEnter" @enter="FadeUp.onEnter" tag="div" appear>
         <div>
             <bread-crumb :current-page="doc?.title" :sub-page="name" />
 
