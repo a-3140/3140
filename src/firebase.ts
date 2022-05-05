@@ -78,6 +78,7 @@ export interface Blog {
   title: string;
   lastEdited: any;
   content: string;
+  category: string;
   description: string;
 }
 

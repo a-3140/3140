@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import gsap from 'gsap';
-import { useRouter } from 'vue-router';
-import { Blog, fetchArticleById, getImageSrc } from '@/firebase';
-import BreadCrumb from '@/components/articles/Breadcrumb.vue'
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { DocumentData } from 'firebase/firestore';
+import BreadCrumb from '@/components/articles/Breadcrumb.vue'
+import { Blog, fetchArticleById, getImageSrc } from '@/firebase';
 
-const doc = ref({} as DocumentData | Blog | undefined);
 const name = useRouter().currentRoute.value.name;
 const { id } = useRouter().currentRoute.value.params;
+const doc = ref({} as DocumentData | Blog | undefined);
 
 await fetchArticleById(id as string).then(data => {
     doc.value = data
@@ -39,7 +39,7 @@ function onBeforeEnter(el: any) {
 
             <div class="container">
                 <div class="mt-8 max-w-5xl mx-auto pb-28 xl:max-w-6xl text-center">
-                    <!-- <div class="text-xl font-normal mb-1 text-red-500">{{ moldedData.category }}</div> -->
+                    <div class="text-xl font-normal mb-1 text-blue-500">{{ doc?.category }}</div>
                     <h1 class="text-3xl text-gray-50 font-bold mb-4">{{ doc?.title }}</h1>
                     <div v-html="doc?.content" class="text-gray-200 text-left leading-8 font-light" />
                     <img :id="articleImgTag" class="w-full hidden" />
