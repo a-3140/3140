@@ -74,7 +74,7 @@ export const fetchArticleById = async (
 };
 
 // * TYPES
-// TODO: Move to its own file
+// TODO: Move to its own file | Change names
 export interface Blog {
   id: string;
   img: string;
