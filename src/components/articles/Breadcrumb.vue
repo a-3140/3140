@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouteMap } from "@/router";
+
 import { RouteRecordName } from "vue-router";
 
 interface PageInfo {
@@ -47,7 +49,10 @@ const pageInfo = defineProps<PageInfo>();
             />
           </svg>
           <router-link
-            :to="{ name: 'BlogList', params: { title: 'Tech' } }"
+            :to="{
+              name: RouteMap.get(pageInfo.subPage),
+              params: { title: pageInfo.subPage },
+            }"
             class="ml-1 text-sm font-medium md:ml-2 text-gray-400 hover:text-white"
           >
             {{ pageInfo.subPage }}</router-link

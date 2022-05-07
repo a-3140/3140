@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { RouteNames } from "@/types/routers";
+import { RouteMap } from "@/router";
 
 const showMenu = ref(false);
+const links: RouteNames[] = Object.keys(RouteNames) as RouteNames[];
+
+const map = Object.fromEntries(RouteMap);
+
+function getKeyByValue(object: any, value: string) {
+  return Object.keys(object).find((key) => object[key] === value);
+}
 
 const toggleMenu = () => {
   showMenu.value = !showMenu.value;
@@ -62,12 +71,13 @@ const toggleMenu = () => {
           <ul
             class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
           >
-            <li>
+            <li v-for="link in links" :key="link">
               <router-link
-                :to="{ name: 'BlogList' }"
+                :to="{ name: link }"
                 class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
                 aria-current="page"
-                >Tech</router-link
+              >
+                {{ getKeyByValue(map, link) }}</router-link
               >
             </li>
           </ul>

@@ -1,14 +1,19 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
+import { HeaderTitles, RouteNames } from '@/types/routers';
 import Home from '@/views/Home.vue';
 import TechArticle from '@/views/tech/TechArticle.vue';
 
 import Collections from '../layouts/types/Collections.vue';
 
 // * Lazyload
-// TODO: Improve and organize naming
-const TechBlogList = () => import("@/views/tech/TechArticles.vue");
 const NotFound = () => import("@/views/NotFound.vue");
+const TechArticles = () => import("@/views/tech/TechArticles.vue");
+
+export const RouteMap: Map<HeaderTitles, RouteNames> = new Map([
+  [HeaderTitles.Tech, RouteNames.TechArticles],
+  [HeaderTitles.Portfolio, RouteNames.Portfolios],
+]);
 
 const routes: RouteRecordRaw[] = [
   {
@@ -18,16 +23,27 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/tech",
-    name: "BlogList",
-    component: TechBlogList,
+    name: RouteNames.TechArticles,
+    component: TechArticles,
     meta: {
-      title: "Tech",
+      title: HeaderTitles.Tech,
       layout: Collections,
       description: "Recent blogs and researches regarding tech topics.",
     },
   },
   {
-    path: "/blog/:id",
+    path: "/portfolio",
+    name: RouteNames.Portfolios,
+    component: TechArticles,
+    meta: {
+      title: HeaderTitles.Portfolio,
+      layout: Collections,
+      description: "Recent blogs and researches regarding tech topics.",
+    },
+  },
+
+  {
+    path: "/tech/:id",
     name: "Tech",
     component: TechArticle,
   },
