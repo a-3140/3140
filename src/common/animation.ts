@@ -15,3 +15,21 @@ export const FadeUp = {
     });
   },
 };
+
+export const FadeLeft = {
+  onEnter(el: any, done: gsap.Callback) {
+    gsap.to(el, {
+      opacity: 1,
+      delay: el.dataset.index * 0.15,
+      x: "0px",
+      onComplete: done,
+    });
+  },
+  onBeforeEnter(el: any) {
+    gsap.from(el, {
+      opacity: 0,
+      x: "2em",
+      delay: el.dataset.index * 0.15,
+    });
+  },
+};

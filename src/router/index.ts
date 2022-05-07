@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 import Home from '@/views/Home.vue';
-import Detail from '@/views/tech/Detail.vue';
+import TechArticle from '@/views/tech/TechArticle.vue';
 
 import Collections from '../layouts/types/Collections.vue';
 
 // * Lazyload
 // TODO: Improve and organize naming
-const TechBlogList = () => import("@/views/tech/TechBlogList.vue");
+const TechBlogList = () => import("@/views/tech/TechArticles.vue");
 const NotFound = () => import("@/views/NotFound.vue");
 
 const routes: RouteRecordRaw[] = [
@@ -29,7 +29,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/blog/:id",
     name: "Tech",
-    component: Detail,
+    component: TechArticle,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];
