@@ -2,11 +2,11 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { FadeUp } from "@/common/animation";
-import { DocumentData } from "firebase/firestore";
-import Breadcrumb from "@/components/articles/Breadcrumb.vue";
-import { getImageSrc } from "@/firebase";
-import { fetchArticleById } from "@/services/queries/articles";
 import { BaseArticle } from "@/types/queries";
+import { DocumentData } from "firebase/firestore";
+import { fetchImgSrc } from "@/services/files/images";
+import Breadcrumb from "@/components/articles/Breadcrumb.vue";
+import { fetchArticleById } from "@/services/queries/articles";
 
 const name = useRouter().currentRoute.value.name;
 const { id } = useRouter().currentRoute.value.params;
@@ -18,8 +18,10 @@ await fetchArticleById({ id: id as string, collection: "tech" }).then(
   }
 );
 
-const articleImgTag = "articleImg";
-await getImageSrc(doc.value?.img, articleImgTag);
+const elementId = "articleImg";
+const fileName = doc.value?.img;
+
+await fetchImgSrc({ fileName: fileName, elementId: elementId });
 </script>
 
 <template>
@@ -45,7 +47,7 @@ await getImageSrc(doc.value?.img, articleImgTag);
             v-html="doc?.content"
             class="text-gray-200 text-left leading-8 font-light"
           />
-          <img :id="articleImgTag" class="w-full hidden" />
+          <img :id="elementId" class="w-full hidden" />
         </div>
       </div>
     </div>
