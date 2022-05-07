@@ -4,15 +4,19 @@ import { useRouter } from "vue-router";
 import { FadeUp } from "@/common/animation";
 import { DocumentData } from "firebase/firestore";
 import Breadcrumb from "@/components/articles/Breadcrumb.vue";
-import { Blog, fetchArticleById, getImageSrc } from "@/firebase";
+import { getImageSrc } from "@/firebase";
+import { fetchArticleById } from "@/services/queries/articles";
+import { BaseArticle } from "@/types/queries";
 
 const name = useRouter().currentRoute.value.name;
 const { id } = useRouter().currentRoute.value.params;
-const doc = ref({} as DocumentData | Blog | undefined);
+const doc = ref({} as DocumentData | BaseArticle | undefined);
 
-await fetchArticleById(id as string).then((data) => {
-  doc.value = data;
-});
+await fetchArticleById({ id: id as string, collection: "tech" }).then(
+  (data) => {
+    doc.value = data;
+  }
+);
 
 const articleImgTag = "articleImg";
 await getImageSrc(doc.value?.img, articleImgTag);

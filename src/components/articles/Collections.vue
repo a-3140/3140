@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { FadeLeft } from "@/common/animation";
-import { BlogSummary, fetchBlogSummaries } from "@/firebase";
+import { ArticleSummary } from "@/types/queries";
+import { fetchArticleSummaries } from "@/services/queries/articles";
 
-const blogs = ref([] as BlogSummary[]);
+const articles = ref([] as ArticleSummary[]);
 
-await fetchBlogSummaries().then((data) => {
-  blogs.value = data;
+await fetchArticleSummaries({ collection: "tech" }).then((data) => {
+  articles.value = data;
 });
 </script>
 
@@ -21,7 +22,7 @@ await fetchBlogSummaries().then((data) => {
     appear
   >
     <li
-      v-for="(item, index) in blogs"
+      v-for="(item, index) in articles"
       :key="item.id"
       class="mb-10 ml-4"
       :data-index="index"
