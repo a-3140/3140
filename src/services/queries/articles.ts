@@ -8,7 +8,6 @@ import {
     ArticleSummary, BaseArticle, FetchByIdParams, FetchCollectionParams
 } from '@/types/queries';
 
-// TODO: See if caching makes sense
 export const fetchArticleSummaries = async (
   params: FetchCollectionParams
 ): Promise<ArticleSummary[]> => {

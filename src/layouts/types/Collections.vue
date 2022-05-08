@@ -2,11 +2,23 @@
 import { useRoute } from "vue-router";
 import BaseLayout from "@/layouts/base/BaseLayout.vue";
 import ContentHeader from "@/components/articles/ContentHeader.vue";
+import { ref, watch } from "vue";
 
 const route = useRoute();
 
-const title = route.meta.title;
-const description = route.meta.description;
+const title = ref("");
+const description = ref("");
+
+title.value = route.meta.title;
+description.value = route.meta.description;
+
+watch(
+  () => route.meta,
+  async () => {
+    title.value = route.meta.title;
+    description.value = route.meta.description;
+  }
+);
 </script>
 
 <template>

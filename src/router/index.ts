@@ -9,6 +9,7 @@ import Collections from '../layouts/types/Collections.vue';
 // * Lazyload
 const NotFound = () => import("@/views/NotFound.vue");
 const TechArticles = () => import("@/views/tech/TechArticles.vue");
+const PortfolioList = () => import("@/views/portfolio/PortfolioList.vue");
 
 export const RouteMap: Map<HeaderTitles, RouteNames> = new Map([
   [HeaderTitles.Tech, RouteNames.TechArticles],
@@ -34,11 +35,12 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/portfolio",
     name: RouteNames.Portfolios,
-    component: TechArticles,
+    component: PortfolioList,
     meta: {
       title: HeaderTitles.Portfolio,
       layout: Collections,
-      description: "Recent blogs and researches regarding tech topics.",
+      description:
+        "Short Descriptions of the things I have done outside of work",
     },
   },
 

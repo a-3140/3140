@@ -24,3 +24,11 @@ export type ArticleSummary = Pick<
   BaseArticle,
   "id" | "lastEdited" | "title" | "description"
 >;
+
+export type PortfolioSummary = Pick<
+  BaseArticle,
+  "id" | "title" | "description"
+> & {
+  link?: string;
+  github?: string;
+};

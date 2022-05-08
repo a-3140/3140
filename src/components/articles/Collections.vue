@@ -5,8 +5,13 @@ import { ArticleSummary } from "@/types/queries";
 import { fetchArticleSummaries } from "@/services/queries/articles";
 
 const articles = ref([] as ArticleSummary[]);
+interface Props {
+  collection: string;
+}
 
-await fetchArticleSummaries({ collection: "tech" }).then((data) => {
+const props = defineProps<Props>();
+
+await fetchArticleSummaries({ collection: props.collection }).then((data) => {
   articles.value = data;
 });
 </script>
