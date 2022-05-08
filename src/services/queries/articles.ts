@@ -34,8 +34,8 @@ const matchDocIdToData = (doc: QueryDocumentSnapshot) => {
   const { lastEdited, title, description } = doc.data();
   return {
     id: doc.id,
-    lastEdited: dateToString(lastEdited.toDate()),
     title: title,
     description: description,
+    lastEdited: dateToString(lastEdited.toDate()),
   };
 };

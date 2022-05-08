@@ -1,7 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Props {
+  link: string;
+}
+const props = defineProps<Props>();
+</script>
 
 <template>
-  <button
+  <a
+    :href="props.link"
+    target="_blank"
     type="button"
     class="bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center"
   >
@@ -21,7 +28,7 @@
       ></path>
     </svg>
     Github
-  </button>
+  </a>
 </template>
 
 <style></style>

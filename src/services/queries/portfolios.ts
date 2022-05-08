@@ -8,20 +8,15 @@ export const fetchPortfolioSummaries = async (
 ): Promise<PortfolioSummary[]> => {
   const querySnapshot = await getDocs(collection(db, params.collection));
 
-  const data = querySnapshot.docs.map((doc: QueryDocumentSnapshot) =>
-    matchDocIdToData(doc)
-  );
+  const data = querySnapshot.docs.map((doc: QueryDocumentSnapshot) => {
+    const { title, description, github, link } = doc.data();
+    return {
+      link: link,
+      title: title,
+      github: github,
+      description: description,
+    };
+  });
 
   return data;
-};
-
-const matchDocIdToData = (doc: QueryDocumentSnapshot): PortfolioSummary => {
-  const { title, description, github, link } = doc.data();
-  return {
-    id: doc.id,
-    title: title,
-    description: description,
-    github: github,
-    link: link,
-  };
 };

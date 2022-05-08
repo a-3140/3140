@@ -4,6 +4,6 @@ export enum HeaderTitles {
 }
 
 export enum RouteNames {
-  TechArticles = "TechArticles",
   Portfolios = "Portfolios",
+  TechArticles = "TechArticles",
 }

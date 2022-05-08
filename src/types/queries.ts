@@ -25,10 +25,7 @@ export type ArticleSummary = Pick<
   "id" | "lastEdited" | "title" | "description"
 >;
 
-export type PortfolioSummary = Pick<
-  BaseArticle,
-  "id" | "title" | "description"
-> & {
+export type PortfolioSummary = Pick<BaseArticle, "title" | "description"> & {
   link?: string;
   github?: string;
 };
