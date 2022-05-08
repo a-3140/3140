@@ -38,8 +38,8 @@ await fetchPortfolioSummaries({ collection: "portfolio" }).then((data) => {
           {{ item.description }}
         </p>
         <div class="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-          <Link :link="item.link" v-if="item.link" />
-          <Github :link="item.github" v-if="item.github" />
+          <Link :link="item?.link" v-if="item?.link" />
+          <Github :link="item?.github" v-if="item?.github" />
         </div>
       </div>
     </li>

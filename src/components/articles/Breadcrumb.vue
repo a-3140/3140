@@ -50,7 +50,7 @@ const pageInfo = defineProps<PageInfo>();
           </svg>
           <router-link
             :to="{
-              name: RouteMap.get(pageInfo.subPage),
+              name: pageInfo.subPage,
               params: { title: pageInfo.subPage },
             }"
             class="ml-1 text-sm font-medium md:ml-2 text-gray-400 hover:text-white"
