@@ -31,11 +31,12 @@ export const fetchArticleById = async (
 };
 
 const matchDocIdToData = (doc: QueryDocumentSnapshot) => {
-  const { lastEdited, title, description } = doc.data();
+  const { lastEdited, date, title, description } = doc.data();
   return {
     id: doc.id,
+    date: date,
     title: title,
     description: description,
-    lastEdited: dateToString(lastEdited.toDate()),
+    lastEdited: lastEdited ? dateToString(lastEdited.toDate()) : null,
   };
 };

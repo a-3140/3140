@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import NotFound from "@/views/NotFound.vue";
 import { defineAsyncComponent } from "vue";
-import LoadingArticle from "@/components/loaders/LoadingArticle.vue";
+import NotFound from "@/views/NotFound.vue";
+import Spinner from "@/components/loaders/Spinner.vue";
 import { FirebaseCollection } from "@/types/common";
 
-const PortfolioList = defineAsyncComponent({
+const Experience = defineAsyncComponent({
   suspensible: false,
   errorComponent: NotFound,
-  loadingComponent: LoadingArticle,
-  loader: () => import("@/components/HorizontalCard.vue"),
+  loadingComponent: Spinner,
+  loader: () => import("@/components/articles/Content.vue"),
   onError: (error, retry, fail, attempts) => {
     if (attempts <= 3) {
       console.log("Error", error);
@@ -20,16 +20,16 @@ const PortfolioList = defineAsyncComponent({
   },
 });
 
-const collection = FirebaseCollection.Portfolio;
+const collection = FirebaseCollection.Experience;
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto pb-28 xl:max-w-6xl">
+  <div class="bg-black/50">
     <KeepAlive>
       <Suspense>
-        <component :is="PortfolioList" :collection="collection" />
+        <component :is="Experience" :collection="collection"> </component>
         <template #fallback>
-          <LoadingArticle />
+          <spinner />
         </template>
       </Suspense>
     </KeepAlive>

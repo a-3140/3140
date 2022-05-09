@@ -3,12 +3,18 @@ import { ref } from "vue";
 import { FadeLeft } from "@/common/animation";
 import Link from "@/components/buttons/Link.vue";
 import { PortfolioSummary } from "@/types/queries";
+import { FirebaseCollection } from "@/types/common";
 import Github from "@/components/buttons/Github.vue";
 import { fetchPortfolioSummaries } from "@/services/queries/portfolios";
 
+interface Props {
+  collection: FirebaseCollection;
+}
+
+const props = defineProps<Props>();
 const portfolios = ref([] as PortfolioSummary[]);
 
-await fetchPortfolioSummaries({ collection: "portfolio" }).then((data) => {
+await fetchPortfolioSummaries({ collection: props.collection }).then((data) => {
   portfolios.value = data;
 });
 </script>

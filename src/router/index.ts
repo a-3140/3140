@@ -10,10 +10,12 @@ import Collections from '../layouts/types/Collections.vue';
 const NotFound = () => import("@/views/NotFound.vue");
 const TechArticles = () => import("@/views/tech/TechArticles.vue");
 const PortfolioList = () => import("@/views/portfolio/PortfolioList.vue");
+const ExperienceList = () => import("@/views/experience/ExperienceList.vue");
 
 export const RouteMap: Map<HeaderTitles, RouteNames> = new Map([
   [HeaderTitles.Tech, RouteNames.TechArticles],
   [HeaderTitles.Portfolio, RouteNames.Portfolios],
+  [HeaderTitles.Experience, RouteNames.Experiences],
 ]);
 
 const routes: RouteRecordRaw[] = [
@@ -43,7 +45,16 @@ const routes: RouteRecordRaw[] = [
         "Short Descriptions of the things I have done outside of work",
     },
   },
-
+  {
+    path: "/experience",
+    name: RouteNames.Experiences,
+    component: ExperienceList,
+    meta: {
+      title: HeaderTitles.Experience,
+      layout: Collections,
+      description: "Quick timeline of software development experience",
+    },
+  },
   {
     path: "/tech/:id",
     name: "Tech",

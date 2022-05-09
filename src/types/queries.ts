@@ -14,15 +14,16 @@ export interface BaseArticle {
   id: Id;
   img: string;
   title: string;
-  lastEdited: any;
+  date?: string;
   content: string;
+  lastEdited?: any;
   category: string;
   description: string;
 }
 
 export type ArticleSummary = Pick<
   BaseArticle,
-  "id" | "lastEdited" | "title" | "description"
+  "id" | "lastEdited" | "date" | "title" | "description"
 >;
 
 export type PortfolioSummary = Pick<BaseArticle, "title" | "description"> & {

@@ -36,9 +36,16 @@ await fetchArticleSummaries({ collection: props.collection }).then((data) => {
         class="absolute w-3.5 h-3.5 rounded-full -left-6 border border-white dark:border-gray-900"
       ></div>
       <time
+        v-if="item.lastEdited"
         class="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-500"
         >Edited: {{ item.lastEdited }}</time
       >
+      <time
+        v-if="item.date"
+        class="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-500"
+        >{{ item.date }}</time
+      >
+
       <h3 class="text-lg font-semibold text-gray-400 dark:text-white">
         {{ item.title }}
       </h3>

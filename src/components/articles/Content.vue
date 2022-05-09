@@ -12,7 +12,13 @@ const name = useRouter().currentRoute.value.name;
 const { id } = useRouter().currentRoute.value.params;
 const doc = ref({} as DocumentData | BaseArticle | undefined);
 
-await fetchArticleById({ id: id as string, collection: "tech" }).then(
+interface Props {
+  collection: string;
+}
+
+const props = defineProps<Props>();
+
+await fetchArticleById({ id: id as string, collection: props.collection }).then(
   (data) => {
     doc.value = data;
   }
@@ -21,7 +27,9 @@ await fetchArticleById({ id: id as string, collection: "tech" }).then(
 const elementId = "articleImg";
 const fileName = doc.value?.img;
 
-await fetchImgSrc({ fileName: fileName, elementId: elementId });
+if (fileName && elementId) {
+  await fetchImgSrc({ fileName: fileName, elementId: elementId });
+}
 </script>
 
 <template>
