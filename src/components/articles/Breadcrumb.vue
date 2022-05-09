@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { RouteMap } from "@/router";
 
-import { RouteRecordName } from "vue-router";
-
-interface PageInfo {
-  subPage?: RouteRecordName | null;
+interface Props {
+  subPage: string;
   currentPage: string;
 }
-const pageInfo = defineProps<PageInfo>();
+
+const props = defineProps<Props>();
+const map = Object.fromEntries(RouteMap);
 </script>
 
 <template>
@@ -50,12 +50,12 @@ const pageInfo = defineProps<PageInfo>();
           </svg>
           <router-link
             :to="{
-              name: pageInfo.subPage,
-              params: { title: pageInfo.subPage },
+              name: map[props.subPage as string],
+              params: { title: props.subPage },
             }"
             class="ml-1 text-sm font-medium md:ml-2 text-gray-400 hover:text-white"
           >
-            {{ pageInfo.subPage }}</router-link
+            {{ props.subPage }}</router-link
           >
         </div>
       </li>
@@ -74,7 +74,7 @@ const pageInfo = defineProps<PageInfo>();
             />
           </svg>
           <span class="ml-1 text-sm font-medium md:ml-2 text-gray-500">{{
-            pageInfo.currentPage
+            props.currentPage
           }}</span>
         </div>
       </li>

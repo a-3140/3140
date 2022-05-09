@@ -35,7 +35,7 @@ await fetchImgSrc({ fileName: fileName, elementId: elementId });
     <div
       class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl"
     >
-      <breadcrumb :current-page="doc?.title" :sub-page="name" />
+      <breadcrumb :current-page="doc?.title" :sub-page="(name as string)" />
 
       <div class="container">
         <div class="mt-8 max-w-5xl mx-auto pb-28 xl:max-w-6xl text-center">

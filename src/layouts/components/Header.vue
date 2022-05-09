@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { RouteNames } from "@/types/routers";
 import { RouteMap } from "@/router";
+import { RouteNames } from "@/types/routers";
+import { getKeyByValue } from "@/helpers/common";
 
 const showMenu = ref(false);
-const links: RouteNames[] = Object.keys(RouteNames) as RouteNames[];
-
 const map = Object.fromEntries(RouteMap);
-
-function getKeyByValue(object: any, value: string) {
-  return Object.keys(object).find((key) => object[key] === value);
-}
+const links: RouteNames[] = Object.keys(RouteNames) as RouteNames[];
 
 const toggleMenu = () => {
   showMenu.value = !showMenu.value;
