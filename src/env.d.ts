@@ -21,3 +21,12 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+interface CollectionProps {
+  name: CollectionNames;
+  collection: FirebaseCollection;
+}
+
+type CollectionNames = "Tech" | "Portfolio" | "Experience";
+type FirebaseCollection = "tech" | "portfolio" | "experience";
+type RouteNames = "Portfolios" | "Experiences" | "TechArticles";

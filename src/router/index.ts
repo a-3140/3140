@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-import { HeaderTitles, RouteNames } from '@/types/routers';
+import { HeaderTitles, RouteNames, RoutePair } from '@/types/routers';
 import Home from '@/views/Home.vue';
 import TechArticle from '@/views/tech/TechArticle.vue';
 
@@ -12,11 +12,11 @@ const TechArticles = () => import("@/views/tech/TechArticles.vue");
 const PortfolioList = () => import("@/views/portfolio/PortfolioList.vue");
 const ExperienceList = () => import("@/views/experience/ExperienceList.vue");
 
-export const RouteMap: Map<HeaderTitles, RouteNames> = new Map([
-  [HeaderTitles.Tech, RouteNames.TechArticles],
-  [HeaderTitles.Portfolio, RouteNames.Portfolios],
-  [HeaderTitles.Experience, RouteNames.Experiences],
-]);
+export const routeMap: RoutePair[] = [
+  { name: "Portfolio", routeName: RouteNames.Portfolios },
+  { name: "Experience", routeName: RouteNames.Experiences },
+  { name: "Tech", routeName: RouteNames.TechArticles },
+];
 
 const routes: RouteRecordRaw[] = [
   {

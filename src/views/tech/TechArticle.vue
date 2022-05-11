@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from "vue";
 import NotFound from "@/views/NotFound.vue";
-import { FirebaseCollection } from "@/types/common";
 import Spinner from "@/components/loaders/Spinner.vue";
 
 const Article = defineAsyncComponent({
@@ -19,14 +18,17 @@ const Article = defineAsyncComponent({
     }
   },
 });
-const collection = FirebaseCollection.Tech;
+const props: CollectionProps = {
+  name: "Tech",
+  collection: "tech",
+};
 </script>
 
 <template>
   <div class="bg-black/50">
     <KeepAlive>
       <Suspense>
-        <component :is="Article" :collection="collection"> </component>
+        <component :is="Article" :props="props"> </component>
         <template #fallback>
           <spinner />
         </template>

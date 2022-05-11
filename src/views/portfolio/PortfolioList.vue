@@ -2,7 +2,6 @@
 import NotFound from "@/views/NotFound.vue";
 import { defineAsyncComponent } from "vue";
 import LoadingArticle from "@/components/loaders/LoadingArticle.vue";
-import { FirebaseCollection } from "@/types/common";
 
 const PortfolioList = defineAsyncComponent({
   suspensible: false,
@@ -20,14 +19,17 @@ const PortfolioList = defineAsyncComponent({
   },
 });
 
-const collection = FirebaseCollection.Portfolio;
+const props: CollectionProps = {
+  name: "Portfolio",
+  collection: "portfolio",
+};
 </script>
 
 <template>
   <div class="max-w-5xl mx-auto pb-28 xl:max-w-6xl">
     <KeepAlive>
       <Suspense>
-        <component :is="PortfolioList" :collection="collection" />
+        <component :is="PortfolioList" :props="props" />
         <template #fallback>
           <LoadingArticle />
         </template>

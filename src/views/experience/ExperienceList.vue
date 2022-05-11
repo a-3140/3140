@@ -2,13 +2,12 @@
 import { defineAsyncComponent } from "vue";
 import NotFound from "@/views/NotFound.vue";
 import LoadingArticle from "@/components/loaders/LoadingArticle.vue";
-import { FirebaseCollection } from "@/types/common";
 
 const ExperienceList = defineAsyncComponent({
   suspensible: false,
   errorComponent: NotFound,
   loadingComponent: LoadingArticle,
-  loader: () => import("@/components/articles/Collections.vue"),
+  loader: () => import("@/components/experience/Collections.vue"),
   onError: (error, retry, fail, attempts) => {
     if (attempts <= 3) {
       console.log("Error", error);
@@ -19,7 +18,11 @@ const ExperienceList = defineAsyncComponent({
     }
   },
 });
-const collection = FirebaseCollection.Experience;
+
+const props: CollectionProps = {
+  name: "Experience",
+  collection: "experience",
+};
 </script>
 
 <template>
@@ -28,7 +31,7 @@ const collection = FirebaseCollection.Experience;
   >
     <KeepAlive>
       <Suspense>
-        <component :is="ExperienceList" :collection="collection" />
+        <component :is="ExperienceList" :props="props" />
         <template #fallback>
           <LoadingArticle />
         </template>

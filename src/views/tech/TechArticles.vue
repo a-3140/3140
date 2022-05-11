@@ -18,7 +18,11 @@ const ArticleList = defineAsyncComponent({
     }
   },
 });
-const collection = "tech";
+
+const props: CollectionProps = {
+  name: "Tech",
+  collection: "tech",
+};
 </script>
 
 <template>
@@ -27,7 +31,7 @@ const collection = "tech";
   >
     <KeepAlive>
       <Suspense>
-        <component :is="ArticleList" :collection="collection" />
+        <component :is="ArticleList" :props="props" />
         <template #fallback>
           <LoadingArticle />
         </template>

@@ -6,6 +6,11 @@ export enum HeaderTitles {
 
 export enum RouteNames {
   Portfolios = "Portfolios",
-  TechArticles = "TechArticles",
   Experiences = "Experiences",
+  TechArticles = "TechArticles",
+}
+
+export interface RoutePair {
+  name: CollectionNames;
+  routeName: RouteNames;
 }

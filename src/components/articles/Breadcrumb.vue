@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouteMap } from "@/router";
+import { routeMap } from "@/router";
 
 interface Props {
   subPage: string;
@@ -7,7 +7,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const map = Object.fromEntries(RouteMap);
 </script>
 
 <template>
@@ -50,7 +49,7 @@ const map = Object.fromEntries(RouteMap);
           </svg>
           <router-link
             :to="{
-              name: map[props.subPage as string],
+              name: routeMap.find((i) => i.name === props.subPage),
               params: { title: props.subPage },
             }"
             class="ml-1 text-sm font-medium md:ml-2 text-gray-400 hover:text-white"
