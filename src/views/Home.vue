@@ -25,6 +25,7 @@ import bg from "@/assets/bg.png";
           <p
             class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 animate-fade-in-up"
           >
+            Former Seafarer turned into self-taught Software Developer!
             Currently working as a fulltime Fullstack Web Developer. I like
             writing/typing, reading and watching informational videos on my
             freetime.
