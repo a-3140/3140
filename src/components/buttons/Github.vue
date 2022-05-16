@@ -10,7 +10,7 @@ const props = defineProps<Props>();
     :href="props.link"
     target="_blank"
     type="button"
-    class="bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center"
+    class="text-fallback bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center"
   >
     <svg
       class="w-4 h-4 mr-2 -ml-1"
@@ -31,4 +31,8 @@ const props = defineProps<Props>();
   </a>
 </template>
 
-<style></style>
+<style scoped>
+.text-fallback {
+  color: #000000;
+}
+</style>
