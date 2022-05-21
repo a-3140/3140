@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { routeMap } from "@/router";
+import bg from "@/assets/logo.png";
 
 const showMenu = ref(false);
 
@@ -12,14 +13,14 @@ const toggleMenu = () => {
 <template>
   <keep-alive>
     <nav
-      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-gray-800 text-white"
+      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-black/90 text-white"
     >
       <div
         class="container flex flex-wrap justify-between items-center mx-auto xl:max-w-6xl"
       >
         <router-link :to="{ name: 'Home' }" class="flex items-center">
           <span
-            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:scale-110 transition-all ease-in-out duration-300"
             >3140</span
           >
         </router-link>
@@ -66,7 +67,7 @@ const toggleMenu = () => {
             <li v-for="route in routeMap" :key="route.name">
               <router-link
                 :to="{ name: route.routeName }"
-                class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                class="block py-2 pr-6 pl-5 text-white rounded md:bg-transparent md:p-0 dark:text-white hover:scale-110 transition-all ease-in-out duration-300"
                 aria-current="page"
               >
                 {{ route.name }}</router-link
