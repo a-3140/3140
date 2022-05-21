@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import bg from "@/assets/bg.png";
 import { onMounted, ref } from "vue";
+import { header } from "@/store/header";
 import LoadingScreen from "@/components/loaders/LoadingScreen.vue";
 
 const show = ref(false);
@@ -8,7 +9,8 @@ const show = ref(false);
 onMounted(() => {
   setTimeout(() => {
     show.value = true;
-  }, 2000);
+    header.showHeader();
+  }, 4000);
 });
 </script>
 
@@ -20,7 +22,9 @@ onMounted(() => {
       id="home"
       v-bind:style="{ 'background-image': `url(${bg})` }"
     >
-      <div class="md:pl-12 sm:pl-0 mt-0 relative h-screen w-screen bg-black/80">
+      <div
+        class="md:pl-12 sm:pl-0 mt-0 relative h-screen w-screen bg-black/80 fullscreen"
+      >
         <main
           class="px-10 sm:pt-12 md:pt-16 lg:pt-20 lg:px-8 xl:pt-28 absolute top-40 md:left-10 sm:left-0"
         >

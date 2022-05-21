@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watchEffect } from "vue";
+import { onBeforeMount, onMounted, ref, watchEffect } from "vue";
 
 const val = ref(3.14);
 const _arr = ref(
@@ -12,8 +12,8 @@ function test() {
   val.value = Math.random();
 }
 
-const running = setInterval(test, 550);
-onMounted(() => {
+const running = setInterval(test, 350);
+onBeforeMount(() => {
   running;
 });
 
@@ -28,17 +28,19 @@ watchEffect(() => {
   }));
 });
 
-onUnmounted(() => {
-  clearInterval(running);
+onMounted(() => {
+  setTimeout(() => {
+    clearInterval(running);
+  }, 2000);
 });
 </script>
 
 <template>
   <div
-    class="grid grid-cols-8 sm:grid-cols-12 gap-0 bg-black/80 opacity-40 z-0 animate-fade-in"
+    class="grid grid-cols-8 sm:grid-cols-12 gap-0 bg-black/80 opacity-40 z-0 animate-fade-in-40 max-h-screen"
   >
     <div
-      class="text-xl font-mono text-green-400 animated-text"
+      class="text-xl font-mono text-green-400 transition-opacity duration-500 ease-in-out"
       v-for="num in _arr"
       :style="{
         opacity: `${Math.random()}`,
@@ -49,9 +51,4 @@ onUnmounted(() => {
   </div>
 </template>
 
-<!-- then animate all the numbers to converge into a place where my name will appear -->
-<style scoped>
-.animated-text {
-  transition: opacity 500ms ease-in-out;
-}
-</style>
+<style scoped></style>

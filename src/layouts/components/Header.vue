@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { routeMap } from "@/router";
-import bg from "@/assets/logo.png";
+import { header } from "@/store/header";
 
 const showMenu = ref(false);
 
@@ -13,6 +13,7 @@ const toggleMenu = () => {
 <template>
   <keep-alive>
     <nav
+      v-if="header.isHeaderVisible"
       class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-black/90 text-white"
     >
       <div
