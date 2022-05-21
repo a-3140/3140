@@ -2,6 +2,8 @@
 import { onBeforeMount, onMounted, ref, watchEffect } from "vue";
 
 const val = ref(3.14);
+const loaded = ref(false);
+const finalLoad = ref(false);
 const _arr = ref(
   new Array(500).fill({}).map(() => {
     return { x: 0, y: 0 };
@@ -12,7 +14,7 @@ function test() {
   val.value = Math.random();
 }
 
-const running = setInterval(test, 350);
+const running = setInterval(test, 300);
 onBeforeMount(() => {
   running;
 });
@@ -31,19 +33,31 @@ watchEffect(() => {
 onMounted(() => {
   setTimeout(() => {
     clearInterval(running);
-  }, 2000);
+    loaded.value = true;
+    setTimeout(() => {
+      finalLoad.value = true;
+    }, 700);
+  }, 1800);
 });
 </script>
 
 <template>
   <div
-    class="grid grid-cols-8 sm:grid-cols-12 gap-0 bg-black/80 opacity-40 z-0 animate-fade-in-40 max-h-screen"
+    class="grid grid-cols-8 sm:grid-cols-12 gap-0 bg-black/80 opacity-40 z-0 animate-fade-in-40 max-h-screen transition-transform duration-300 ease-in-out"
   >
     <div
-      class="text-xl font-mono text-green-400 transition-opacity duration-500 ease-in-out"
+      class="text-xl font-mono text-green-400 duration-500 ease-in-out"
       v-for="num in _arr"
+      :class="loaded ? 'transition-transform' : 'transition-opacity'"
       :style="{
         opacity: `${Math.random()}`,
+        transform: `${
+          finalLoad
+            ? `translateY(-200vh)`
+            : loaded
+            ? `translateY(${Math.random() * 100}vh)`
+            : 'translateY(0)'
+        }`,
       }"
     >
       {{ num.x }}, {{ num.y }}
