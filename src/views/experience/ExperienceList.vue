@@ -7,6 +7,7 @@ import LoadingArticle from "@/components/loaders/LoadingArticle.vue";
 onMounted(() => {
   !header.isHeaderVisible ? header.showHeader() : null;
 });
+
 const ExperienceList = defineAsyncComponent({
   suspensible: false,
   errorComponent: NotFound,

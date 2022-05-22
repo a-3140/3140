@@ -15,7 +15,7 @@ onMounted(() => {
   setTimeout(() => {
     show.value = true;
     header.showHeader();
-  }, 3400);
+  }, 3200);
 });
 </script>
 

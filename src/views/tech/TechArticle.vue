@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, onMounted } from "vue";
 import NotFound from "@/views/NotFound.vue";
 import Spinner from "@/components/loaders/Spinner.vue";
+import { header } from "@/store/header";
+
+onMounted(() => {
+  !header.isHeaderVisible ? header.showHeader() : null;
+});
 
 const Article = defineAsyncComponent({
   suspensible: false,

@@ -1,13 +1,94 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 import { routeMap } from "@/router";
 import { header } from "@/store/header";
+import { match } from "assert";
 
 const showMenu = ref(false);
 
 const toggleMenu = () => {
   showMenu.value = !showMenu.value;
 };
+
+const correctText = "3140";
+const charmap = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "0",
+];
+
+const value = ref("");
+const currentChar = ref("");
+const charIndex = ref(0);
+const matched = ref("");
+const index = ref(0);
+
+function checkCurrentCharAtIndex(currentChar: string, correctChar: string) {
+  return currentChar === correctChar;
+}
+
+onMounted(() => {
+  setTimeout(() => {
+    const running = setInterval(checkChars, 10);
+
+    function checkChars() {
+      console.log(correctText === value.value);
+
+      if (charIndex.value === 4) {
+        currentChar.value = "";
+        clearInterval(running);
+      }
+
+      value.value = `${matched.value}${currentChar.value}`;
+      currentChar.value = charmap[index.value];
+      if (
+        checkCurrentCharAtIndex(
+          currentChar.value,
+          correctText.charAt(charIndex.value)
+        )
+      ) {
+        value.value += currentChar.value;
+        matched.value = `${matched.value}${currentChar.value}`;
+        charIndex.value++;
+        index.value = 0;
+      }
+      index.value++;
+    }
+  }, 3200);
+});
 </script>
 
 <template>
@@ -22,7 +103,7 @@ const toggleMenu = () => {
         <router-link :to="{ name: 'Home' }" class="flex items-center">
           <span
             class="self-center text-xl font-semibold whitespace-nowrap text-green-400 hover:scale-110 transition-all ease-in-out duration-300"
-            >3140</span
+            >{{ value }}</span
           >
         </router-link>
         <button

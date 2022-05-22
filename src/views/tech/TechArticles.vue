@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { header } from "@/store/header";
 import NotFound from "@/views/NotFound.vue";
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, onMounted } from "vue";
 import LoadingArticle from "@/components/loaders/LoadingArticle.vue";
+
+onMounted(() => {
+  !header.isHeaderVisible ? header.showHeader() : null;
+});
 
 const ArticleList = defineAsyncComponent({
   suspensible: false,

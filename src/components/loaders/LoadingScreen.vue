@@ -55,7 +55,7 @@ onMounted(() => {
         opacity: `${Math.random()}`,
         transform: `${
           finalLoad
-            ? `translateY(-200vh)`
+            ? `translateY(-300vh)`
             : loaded
             ? `translateY(${Math.random() * 100}vh)`
             : 'translateY(0)'
