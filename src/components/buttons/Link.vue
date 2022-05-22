@@ -9,7 +9,7 @@ const props = defineProps<Props>();
   <a :href="props.link" target="_blank">
     <button
       type="button"
-      class="bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center"
+      class="border-2 hover:border-green-400 border-gray-600 text-green-400 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center transition-colors ease-in-out duration-300"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
