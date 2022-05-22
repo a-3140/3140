@@ -33,11 +33,13 @@ watchEffect(() => {
 onMounted(() => {
   setTimeout(() => {
     clearInterval(running);
-    loaded.value = true;
     setTimeout(() => {
-      finalLoad.value = true;
+      loaded.value = true;
+      setTimeout(() => {
+        finalLoad.value = true;
+      }, 700);
     }, 700);
-  }, 1800);
+  }, 1500);
 });
 </script>
 

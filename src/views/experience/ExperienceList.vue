@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from "vue";
+import { header } from "@/store/header";
+import { defineAsyncComponent, onMounted } from "vue";
 import NotFound from "@/views/NotFound.vue";
 import LoadingArticle from "@/components/loaders/LoadingArticle.vue";
 
+onMounted(() => {
+  !header.isHeaderVisible ? header.showHeader() : null;
+});
 const ExperienceList = defineAsyncComponent({
   suspensible: false,
   errorComponent: NotFound,

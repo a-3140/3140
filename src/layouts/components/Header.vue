@@ -14,14 +14,14 @@ const toggleMenu = () => {
   <keep-alive>
     <nav
       v-if="header.isHeaderVisible"
-      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-black/90 text-white"
+      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-black/90 text-white font-mono"
     >
       <div
         class="container flex flex-wrap justify-between items-center mx-auto xl:max-w-6xl"
       >
         <router-link :to="{ name: 'Home' }" class="flex items-center">
           <span
-            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:scale-110 transition-all ease-in-out duration-300"
+            class="self-center text-xl font-semibold whitespace-nowrap text-green-400 hover:scale-110 transition-all ease-in-out duration-300"
             >3140</span
           >
         </router-link>
