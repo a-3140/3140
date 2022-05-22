@@ -1,13 +1,13 @@
 export enum HeaderTitles {
-  Tech = "Tech",
+  Blog = "Blog",
   Portfolio = "Portfolio",
   Experience = "Experience",
 }
 
 export enum RouteNames {
+  Blogs = "Blogs",
   Portfolios = "Portfolios",
   Experiences = "Experiences",
-  TechArticles = "TechArticles",
 }
 
 export interface RoutePair {

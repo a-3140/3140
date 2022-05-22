@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { header } from "@/store/header";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  !header.isHeaderVisible ? header.showHeader() : null;
+});
+</script>
 
 <template>
   <div

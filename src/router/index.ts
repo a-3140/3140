@@ -15,7 +15,7 @@ const ExperienceList = () => import("@/views/experience/ExperienceList.vue");
 export const routeMap: RoutePair[] = [
   { name: "Portfolio", routeName: RouteNames.Portfolios },
   { name: "Experience", routeName: RouteNames.Experiences },
-  { name: "Tech", routeName: RouteNames.TechArticles },
+  { name: "Blog", routeName: RouteNames.Blogs },
 ];
 
 const routes: RouteRecordRaw[] = [
@@ -25,11 +25,11 @@ const routes: RouteRecordRaw[] = [
     component: Home,
   },
   {
-    path: "/tech",
-    name: RouteNames.TechArticles,
+    path: "/blog",
+    name: RouteNames.Blogs,
     component: TechArticles,
     meta: {
-      title: HeaderTitles.Tech,
+      title: HeaderTitles.Blog,
       layout: Collections,
       description: "Recent blogs and researches regarding tech topics.",
     },
@@ -56,8 +56,8 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: "/tech/:id",
-    name: "Tech",
+    path: "/blog/:id",
+    name: "Blog",
     component: TechArticle,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },

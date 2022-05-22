@@ -27,6 +27,6 @@ interface CollectionProps {
   collection: FirebaseCollection;
 }
 
-type CollectionNames = "Tech" | "Portfolio" | "Experience";
+type CollectionNames = "Blog" | "Portfolio" | "Experience";
 type FirebaseCollection = "tech" | "portfolio" | "experience";
-type RouteNames = "Portfolios" | "Experiences" | "TechArticles";
+type RouteNames = "Portfolios" | "Experiences" | "BlogArticles";

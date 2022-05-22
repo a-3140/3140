@@ -24,7 +24,7 @@ const Article = defineAsyncComponent({
   },
 });
 const props: CollectionProps = {
-  name: "Tech",
+  name: "Blog",
   collection: "tech",
 };
 </script>
