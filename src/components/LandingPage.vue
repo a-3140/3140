@@ -11,7 +11,9 @@ import Github from "./buttons/Github.vue";
         a.atienza
         <span class="text-green-800 block sm:inline-block"> web developer</span>
       </div>
-      <div class="mt-6 text-gray-500 tracking-wider max-w-xl text-md">
+      <div
+        class="mt-6 text-gray-500 md:text-left tracking-wider max-w-xl text-md"
+      >
         Software developer based from the Philippines. Expertise on fullstack
         web-development using different stacks with internal and client-facing
         experience. Currently working in Trevipay which is based in Australia.
