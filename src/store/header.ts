@@ -13,4 +13,8 @@ export const header = reactive({
   logoIsShown() {
     isLogoLoaded.value = true;
   },
+  keepHeader(extraConditional = true) {
+    if (!isHeaderVisible.value && extraConditional) header.showHeader();
+    if (!isLogoLoaded.value && extraConditional) header.logoIsShown();
+  },
 });

@@ -1,28 +1,30 @@
 <script setup lang="ts">
 import bg from "@/assets/bg.png";
 import { onBeforeMount, onMounted, ref } from "vue";
-import { header } from "@/store/header";
+import { header, isHeaderVisible, isLogoLoaded } from "@/store/header";
 import LoadingScreen from "@/components/loaders/LoadingScreen.vue";
 import LandingPage from "@/components/LandingPage.vue";
-
-const show = ref(false);
+import { hasLoadedOnce } from "@/store/loaders";
 
 onBeforeMount(() => {
   header.hideHeader();
 });
 
 onMounted(() => {
-  setTimeout(() => {
-    show.value = true;
-    header.showHeader();
-  }, 3200);
+  header.keepHeader(hasLoadedOnce.value);
+
+  if (!hasLoadedOnce.value)
+    setTimeout(() => {
+      header.showHeader();
+      hasLoadedOnce.value = true;
+    }, 3200);
 });
 </script>
 
 <template>
   <div>
     <div
-      v-if="show"
+      v-if="hasLoadedOnce"
       class="h-100"
       id="home"
       v-bind:style="{ 'background-image': `url(${bg})` }"
