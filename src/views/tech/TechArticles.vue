@@ -21,7 +21,7 @@ const ArticleList = defineAsyncComponent({
 
 const props: CollectionProps = {
   name: "Blog",
-  collection: "tech",
+  collection: "blogs",
 };
 </script>
 

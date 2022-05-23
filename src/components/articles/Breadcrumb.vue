@@ -47,10 +47,10 @@ const props = defineProps<Props>();
               clip-rule="evenodd"
             />
           </svg>
+          <!-- use programmatic version here -->
           <router-link
             :to="{
-              name: routeMap.find((i) => i.name === props.subPage),
-              params: { title: props.subPage },
+              name: 'Blogs',
             }"
             class="ml-1 text-sm font-medium md:ml-2 text-gray-400 hover:text-white"
           >

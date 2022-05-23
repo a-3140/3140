@@ -13,10 +13,10 @@ const { id } = useRouter().currentRoute.value.params;
 const doc = ref({} as DocumentData | BaseArticle | undefined);
 
 interface Props {
-  collection: string;
+  props: CollectionProps;
 }
 
-const props = defineProps<Props>();
+const { props } = defineProps<Props>();
 
 await fetchArticleById({ id: id as string, collection: props.collection }).then(
   (data) => {
