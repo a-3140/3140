@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { onMounted, onUpdated, ref } from "vue";
 import { routeMap } from "@/router";
-import { header } from "@/store/header";
-import { match } from "assert";
+import { ref } from "vue";
+import { isHeaderVisible, header, isLogoLoaded } from "@/store/header";
 
 const showMenu = ref(false);
 
@@ -60,15 +59,14 @@ function checkCurrentCharAtIndex(currentChar: string, correctChar: string) {
   return currentChar === correctChar;
 }
 
-onMounted(() => {
+if (isLogoLoaded)
   setTimeout(() => {
     const running = setInterval(checkChars, 10);
 
     function checkChars() {
-      console.log(correctText === value.value);
-
       if (charIndex.value === 4) {
         currentChar.value = "";
+        header.logoIsShown();
         clearInterval(running);
       }
 
@@ -88,13 +86,12 @@ onMounted(() => {
       index.value++;
     }
   }, 3200);
-});
 </script>
 
 <template>
   <keep-alive>
     <nav
-      v-if="header.isHeaderVisible"
+      v-if="isHeaderVisible"
       class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-black/90 text-white font-mono"
     >
       <div
@@ -103,7 +100,7 @@ onMounted(() => {
         <router-link :to="{ name: 'Home' }" class="flex items-center">
           <span
             class="self-center text-xl font-semibold whitespace-nowrap text-green-400 hover:scale-110 transition-all ease-in-out duration-300"
-            >{{ value }}</span
+            >{{ isLogoLoaded ? correctText : value }}</span
           >
         </router-link>
         <button

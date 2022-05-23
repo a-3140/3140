@@ -1,11 +1,16 @@
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+
+export const isHeaderVisible = ref(false);
+export const isLogoLoaded = ref(false);
 
 export const header = reactive({
-  isHeaderVisible: false,
   showHeader() {
-    this.isHeaderVisible = true;
+    isHeaderVisible.value = true;
   },
   hideHeader() {
-    this.isHeaderVisible = false;
+    isHeaderVisible.value = false;
+  },
+  logoIsShown() {
+    isLogoLoaded.value = true;
   },
 });

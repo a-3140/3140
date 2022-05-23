@@ -2,9 +2,15 @@
 import { useRoute } from "vue-router";
 import BaseLayout from "@/layouts/base/BaseLayout.vue";
 import ContentHeader from "@/components/articles/ContentHeader.vue";
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
+import { header, isHeaderVisible, isLogoLoaded } from "@/store/header";
 
 const route = useRoute();
+
+onMounted(() => {
+  if (!isHeaderVisible.value) header.showHeader();
+  if (!isLogoLoaded.value) header.logoIsShown();
+});
 
 const title = ref("");
 const description = ref("");

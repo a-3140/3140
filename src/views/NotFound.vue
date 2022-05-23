@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { header } from "@/store/header";
 import { onMounted } from "vue";
+import { header, isHeaderVisible, isLogoLoaded } from "@/store/header";
 
 onMounted(() => {
-  !header.isHeaderVisible ? header.showHeader() : null;
+  if (!isHeaderVisible.value) header.showHeader();
+  if (!isLogoLoaded.value) header.logoIsShown();
 });
 </script>
 
