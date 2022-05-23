@@ -7,18 +7,20 @@ import Github from "./buttons/Github.vue";
     <main
       class="h-5/6 flex flex-col justify-center px-9 text-center items-center sm:items-start"
     >
-      <div class="tracking-tighter text-5xl max-w-2xl font-mono text-green-400">
-        a.atienza
+      <div
+        class="tracking-tighter text-5xl max-w-2xl font-mono text-green-400 animate-fade-in-up"
+      >
+        <span>a.atienza </span>
         <span class="text-green-800 block sm:inline-block"> web developer</span>
       </div>
       <div
-        class="mt-6 text-gray-500 md:text-left tracking-wider max-w-xl text-md"
+        class="mt-6 text-gray-500 md:text-left tracking-wider max-w-xl text-md animate-fade-in-right"
       >
         Software developer based from the Philippines. Expertise on fullstack
         web-development using different stacks with internal and client-facing
         experience. Currently working in Trevipay which is based in Australia.
       </div>
-      <Github class="mt-8" link="https://github.com/a-3140" />
+      <Github class="mt-8 animate-fade-in" link="https://github.com/a-3140" />
     </main>
   </div>
 </template>

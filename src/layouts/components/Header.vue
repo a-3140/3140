@@ -147,6 +147,7 @@ if (isLogoLoaded)
               <router-link
                 :to="{ name: route.routeName }"
                 class="block py-2 pr-6 pl-5 text-white rounded md:bg-transparent md:p-0 dark:text-white hover:scale-110 transition-all ease-in-out duration-300"
+                :class="isLogoLoaded ? '' : 'animate-fade-in-down'"
                 aria-current="page"
               >
                 {{ route.name }}</router-link

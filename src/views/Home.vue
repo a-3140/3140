@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import bg from "@/assets/bg.png";
-import { onBeforeMount, onMounted, ref } from "vue";
-import { header, isHeaderVisible, isLogoLoaded } from "@/store/header";
-import LoadingScreen from "@/components/loaders/LoadingScreen.vue";
-import LandingPage from "@/components/LandingPage.vue";
+import { header } from "@/store/header";
+import { onBeforeMount, onMounted } from "vue";
 import { hasLoadedOnce } from "@/store/loaders";
+import LandingPage from "@/components/LandingPage.vue";
+import LoadingScreen from "@/components/loaders/LoadingScreen.vue";
 
 onBeforeMount(() => {
   header.hideHeader();
