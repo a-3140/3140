@@ -51,7 +51,6 @@ const routes: RouteRecordRaw[] = [
     component: ExperienceList,
     meta: {
       title: HeaderTitles.Experience,
-      layout: Collections,
       description: "Quick timeline of software development experience",
     },
   },
