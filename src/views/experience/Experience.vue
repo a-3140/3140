@@ -7,7 +7,7 @@ const ExperienceList = defineAsyncComponent({
   suspensible: false,
   errorComponent: NotFound,
   loadingComponent: LoadingArticle,
-  loader: () => import("@/collections/experience/Collections.vue"),
+  loader: () => import("@/modules/experience/ExperienceList.vue"),
   onError: (error, retry, fail, attempts) => {
     if (attempts <= 3) {
       console.log("Error", error);

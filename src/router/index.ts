@@ -10,7 +10,7 @@ import Collections from '../layouts/types/Collections.vue';
 const NotFound = () => import("@/views/NotFound.vue");
 const TechArticles = () => import("@/views/tech/TechArticles.vue");
 const PortfolioList = () => import("@/views/portfolio/PortfolioList.vue");
-const ExperienceList = () => import("@/views/experience/ExperienceList.vue");
+const Experience = () => import("@/views/experience/Experience.vue");
 
 export const routeMap: RoutePair[] = [
   { name: "Portfolio", routeName: RouteNames.Portfolios },
@@ -48,7 +48,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/experience",
     name: RouteNames.Experiences,
-    component: ExperienceList,
+    component: Experience,
     meta: {
       title: HeaderTitles.Experience,
       description: "Quick timeline of software development experience",
