@@ -1,11 +1,19 @@
 import {
-    collection, doc, DocumentData, getDoc, getDocs, QueryDocumentSnapshot
+  collection,
+  doc,
+  DocumentData,
+  getDoc,
+  getDocs,
+  QueryDocumentSnapshot,
 } from 'firebase/firestore';
 
+import { dateToString } from '@/common/functions';
 import { db } from '@/firebase';
-import { dateToString } from '@/helpers/date';
 import {
-    ArticleSummary, BaseArticle, FetchByIdParams, FetchCollectionParams
+  ArticleSummary,
+  BaseArticle,
+  FetchByIdParams,
+  FetchCollectionParams,
 } from '@/types/queries';
 
 export const fetchArticleSummaries = async (
