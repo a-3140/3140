@@ -18,6 +18,7 @@ export interface BaseArticle {
   content: string;
   lastEdited?: any;
   category: string;
+  company?: string;
   description: string;
 }
 
@@ -28,7 +29,7 @@ export type ArticleSummary = Pick<
 
 export type ExperienceSummary = Pick<
   BaseArticle,
-  "id" | "date" | "title" | "description"
+  "id" | "date" | "title" | "description" | "company"
 >;
 
 export type PortfolioSummary = Pick<BaseArticle, "title" | "description"> & {

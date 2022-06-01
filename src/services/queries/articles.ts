@@ -39,12 +39,13 @@ export const fetchArticleById = async (
 };
 
 const matchDocIdToData = (doc: QueryDocumentSnapshot) => {
-  const { lastEdited, date, title, description } = doc.data();
+  const { company, lastEdited, date, title, description } = doc.data();
   return {
     id: doc.id,
     date: date,
     title: title,
     description: description,
+    company: company,
     lastEdited: lastEdited ? dateToString(lastEdited.toDate()) : null,
   };
 };
