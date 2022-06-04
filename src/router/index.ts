@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 import { HeaderTitles, RouteNames, RoutePair } from '@/types/routers';
+import BlogPost from '@/views/blog/BlogPost.vue';
 import Home from '@/views/Home.vue';
-import TechArticle from '@/views/tech/TechArticle.vue';
 
 import Collections from '../layouts/types/Collections.vue';
 
 // * Lazyload
 const NotFound = () => import("@/views/NotFound.vue");
-const TechArticles = () => import("@/views/tech/TechArticles.vue");
+const BlogList = () => import("@/views/blog/BlogList.vue");
 const PortfolioList = () => import("@/views/portfolio/PortfolioList.vue");
 const Experience = () => import("@/views/experience/Experience.vue");
 
@@ -27,7 +27,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/blog",
     name: RouteNames.Blogs,
-    component: TechArticles,
+    component: BlogList,
     meta: {
       title: HeaderTitles.Blog,
       layout: Collections,
@@ -57,7 +57,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/blog/:id",
     name: "Blog",
-    component: TechArticle,
+    component: BlogPost,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];
