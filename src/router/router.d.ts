@@ -12,7 +12,7 @@ import { HeaderTitles } from '@/types/routers';
 declare module "vue-router" {
   interface RouteMeta {
     layout?: Component;
-    title: HeaderTitles;
-    description: string;
+    title?: HeaderTitles;
+    description?: string;
   }
 }

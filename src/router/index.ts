@@ -31,7 +31,6 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: HeaderTitles.Blog,
       layout: Collections,
-      description: "Recent blogs and researches regarding tech topics.",
     },
   },
   {
@@ -56,7 +55,7 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/blog/:id",
-    name: "Blog",
+    name: "BlogPost",
     component: BlogPost,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },

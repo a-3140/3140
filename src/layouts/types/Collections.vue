@@ -14,14 +14,14 @@ onMounted(() => {
 const title = ref("");
 const description = ref("");
 
-title.value = route.meta.title;
-description.value = route.meta.description;
+title.value = route.meta.title || "";
+description.value = route.meta.description || "";
 
 watch(
   () => route.meta,
   async () => {
-    title.value = route.meta.title;
-    description.value = route.meta.description;
+    title.value = route.meta.title || "";
+    description.value = route.meta.description || "";
   }
 );
 </script>
@@ -29,7 +29,7 @@ watch(
 <template>
   <base-layout>
     <div
-      class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl page-collection"
+      class="max-w-5xl mx-auto pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl page-collection bg-black/50"
     >
       <content-header :title="title" :description="description" />
       <slot></slot>

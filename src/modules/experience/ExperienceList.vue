@@ -24,7 +24,7 @@ await fetchArticleSummaries({ collection: props.collection }).then((data) => {
     :css="false"
     name="list"
     tag="ul"
-    class="flex flex-col"
+    class="flex flex-col bg-black/50"
     appear
   >
     <li
