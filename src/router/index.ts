@@ -31,6 +31,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: HeaderTitles.Blog,
       layout: Collections,
+      description: "Recent blogs and researches regarding tech topics.",
     },
   },
   {
