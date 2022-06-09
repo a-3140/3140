@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FadeLeft } from "@/common/animation";
 import Link from "@/components/buttons/Link.vue";
 import { PortfolioSummary } from "@/types/queries";
 import Github from "@/components/buttons/Github.vue";
@@ -18,14 +17,7 @@ await fetchPortfolioSummaries({ collection: props.collection }).then((data) => {
 </script>
 
 <template>
-  <TransitionGroup
-    :css="false"
-    @before-enter="FadeLeft.onBeforeEnter"
-    @enter="FadeLeft.onEnter"
-    name="list"
-    tag="ul"
-    appear
-  >
+  <ul>
     <li
       v-for="(item, index) in portfolios"
       :key="item.title"
@@ -47,7 +39,7 @@ await fetchPortfolioSummaries({ collection: props.collection }).then((data) => {
         </div>
       </div>
     </li>
-  </TransitionGroup>
+  </ul>
 </template>
 
 <style scoped></style>

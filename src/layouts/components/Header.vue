@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { routeMap } from "@/router";
-import Burger from "@/components/icons/Burger.vue";
+import MenuAlt from "@/components/icons/MenuAlt.vue";
 import Close from "../../components/icons/Close.vue";
 import { isHeaderVisible, header, isLogoLoaded } from "@/store/header";
 
@@ -94,7 +94,7 @@ if (isLogoLoaded)
   <keep-alive>
     <nav
       v-if="isHeaderVisible"
-      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-md bg-black/10 text-white font-mono fixed top-0 w-full"
+      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-md bg-black/10 text-white font-mono absolute top-0 w-full z-10"
     >
       <div
         class="container flex flex-wrap justify-between items-center mx-auto xl:max-w-6xl"
@@ -108,33 +108,49 @@ if (isLogoLoaded)
         <button
           type="button"
           @click="toggleMenu"
-          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 z-10"
+          class="inline-flex items-center p-2 ml-3 text-sm rounded-lg md:hidden text-gray-400 hover:text-gray-200 z-50 hover:scale-105 transition-all ease-in-out duration-200"
           aria-controls="mobile-menu-2"
           aria-expanded="false"
         >
-          <close v-if="showMenu" />
-          <burger v-else />
+          <menu-alt v-if="!showMenu" />
+          <close v-else="showMenu" />
         </button>
-        <div
-          :class="showMenu ? '' : 'hidden'"
-          class="w-full md:block md:w-auto"
-        >
-          <ul
-            class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+        <Transition tag="div" appear>
+          <div
+            v-if="showMenu"
+            class="w-full z-40 bg-zinc-900 top-0 left-0 h-screen fixed"
           >
-            <li v-for="route in routeMap" :key="route.name">
-              <router-link
-                :to="{ name: route.routeName }"
-                class="block py-2 pr-6 pl-5 text-white rounded md:bg-transparent md:p-0 dark:text-white hover:scale-110 transition-all ease-in-out duration-300"
-                :class="isLogoLoaded ? '' : 'animate-fade-in-down'"
-                aria-current="page"
-              >
-                {{ route.name }}</router-link
-              >
-            </li>
-          </ul>
-        </div>
+            <ul
+              class="flex flex-col justify-center h-screen items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+            >
+              <li v-for="route in routeMap" :key="route.name">
+                <router-link
+                  @click="toggleMenu"
+                  :to="{ name: route.routeName }"
+                  class="block py-2 pr-6 pl-5 text-white rounded md:bg-transparent md:p-0 dark:text-white hover:scale-110 transition-all ease-in-out duration-300"
+                  :class="isLogoLoaded ? '' : 'animate-fade-in-down'"
+                  aria-current="page"
+                >
+                  {{ route.name }}</router-link
+                >
+              </li>
+            </ul>
+          </div>
+        </Transition>
       </div>
     </nav>
   </keep-alive>
 </template>
+
+<style scoped>
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

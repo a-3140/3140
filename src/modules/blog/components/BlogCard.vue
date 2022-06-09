@@ -11,7 +11,6 @@ defineProps<{ posts: Post[] }>();
     <div
       v-for="(post, index) in posts"
       :key="post.slug"
-      :data-index="index"
       class="mb-4 rounded-md hover:bg-zinc-800 ease-in-out transition-all duration-400 delay-100 lg:hover:scale-105"
     >
       <router-link
