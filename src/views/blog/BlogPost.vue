@@ -59,43 +59,45 @@ async function getPost(postSlug: string) {
         backgroundImage: `url(${post.data.featured_image || imgPlaceholder})`,
       }"
     >
-      <div
-        class="w-full bg-black/50 h-full flex flex-col justify-between items-start p-4"
-      >
-        <div @click="$router.back()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-        </div>
-
-        <div>
-          <div class="text-white text-3xl text-semibold tracking-wide">
-            {{ post.data.title }}
-          </div>
-          <div class="text-gray-300 text-xs py-2">
-            {{ rawStringToFormattedDate(post.data.updated) }}
-            <span
-              >- {{ post.data.author.first_name }}
-              {{ post.data.author.last_name }}</span
+      <div class="w-full bg-black/50 h-full">
+        <div
+          class="w-full h-full flex flex-col justify-between items-start p-4 md:max-w-lg mx-auto"
+        >
+          <div @click="$router.back()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
             >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="text-white text-3xl text-semibold tracking-wide">
+              {{ post.data.title }}
+            </div>
+            <div class="text-gray-300 text-xs py-2">
+              {{ rawStringToFormattedDate(post.data.updated) }}
+              <span
+                >- {{ post.data.author.first_name }}
+                {{ post.data.author.last_name }}</span
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="px-4 text-left bg-black/70 p-2 pt-8 rounded-3xl min-h-screen">
-      <div v-html="post.data.body"></div>
+      <div class="md:max-w-lg mx-auto pb-10" v-html="post.data.body"></div>
     </div>
   </div>
 </template>

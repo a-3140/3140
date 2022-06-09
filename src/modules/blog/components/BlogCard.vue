@@ -27,7 +27,7 @@ defineProps<{ posts: Post[] }>();
           <h5 class="text-md font-semibold text-white">
             {{ post.title }}
           </h5>
-          <p class="hidden text-xs text-gray-400 tracking-wide">
+          <p class="hidden md:block py-2 text-xs text-gray-400 tracking-wide">
             {{ post.summary }}
           </p>
         </div>

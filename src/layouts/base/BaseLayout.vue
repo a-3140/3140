@@ -7,30 +7,14 @@ const image: string = `url(${bg})`;
 
 <template>
   <div
-    class="bg-black overflow-hidden fullscreen"
-    id="wrapper"
+    class="bg-black overflow-hidden min-h-screen bg-fixed"
     v-bind:style="{ 'background-image': image }"
   >
     <Header />
-    <div class="mx-auto content-wrapper bg-black/80">
+    <div class="mx-auto min-h-screen bg-black/80">
       <slot></slot>
     </div>
   </div>
 </template>
 
-<style>
-#content {
-  display: flex;
-}
-
-#wrapper {
-  min-height: calc(100vh - 68px);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-attachment: fixed;
-}
-
-.content-wrapper {
-  min-height: calc(100vh - 68px);
-}
-</style>
+<style></style>

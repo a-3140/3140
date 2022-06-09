@@ -29,7 +29,7 @@ watch(
 <template>
   <base-layout>
     <div
-      class="max-w-5xl mx-auto sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl page-collection bg-black/50 min-h-full p-4"
+      class="max-w-5xl mx-auto sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl page-collection bg-black/50 min-h-screen p-4"
     >
       <content-header :title="title" :description="description" />
       <slot></slot>

@@ -40,8 +40,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mt-8 pt-4 rounded-3xl bg-zinc-900">
-    <div class="xl:max-w-6xl flex space-x-4 mx-4 mt-10 pb-10">
+  <div class="mt-8 pt-4 mx-auto md:max-w-xl rounded-3xl bg-zinc-900">
+    <div class="flex space-x-4 md:space-x-10 mx-4 md:mx-8 mt-10 pb-10">
       <div class="flex flex-col basis-1/2">
         <BlogCard :posts="firstColumnPosts" />
       </div>
