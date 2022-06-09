@@ -54,16 +54,16 @@ async function getPost(postSlug: string) {
 <template>
   <div id="blog-post" v-if="loaded && post.data" class="text-white relative">
     <div
-      class="h-80 w-full bg-cover rounded-b-3xl"
+      class="h-80 lg:h-96 w-full bg-cover rounded-b-3xl lg:bg-center"
       :style="{
         backgroundImage: `url(${post.data.featured_image || imgPlaceholder})`,
       }"
     >
       <div class="w-full bg-black/50 h-full">
         <div
-          class="w-full h-full flex flex-col justify-between items-start p-4 md:max-w-lg mx-auto"
+          class="w-full h-full flex flex-col justify-between items-start p-4 md:px-0 md:max-w-lg lg:max-w-3xl mx-auto"
         >
-          <div @click="$router.back()">
+          <div @click="$router.back()" class="hover:cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -81,10 +81,12 @@ async function getPost(postSlug: string) {
           </div>
 
           <div class="flex flex-col">
-            <div class="text-white text-3xl text-semibold tracking-wide">
+            <div
+              class="text-white text-3xl lg:text-4xl text-semibold tracking-wide"
+            >
               {{ post.data.title }}
             </div>
-            <div class="text-gray-300 text-xs py-2">
+            <div class="text-gray-300 text-xs lg:text-sm py-2">
               {{ rawStringToFormattedDate(post.data.updated) }}
               <span
                 >- {{ post.data.author.first_name }}
@@ -97,7 +99,10 @@ async function getPost(postSlug: string) {
     </div>
 
     <div class="px-4 text-left bg-black/70 p-2 pt-8 rounded-3xl min-h-screen">
-      <div class="md:max-w-lg mx-auto pb-10" v-html="post.data.body"></div>
+      <div
+        class="md:max-w-lg lg:max-w-3xl mx-auto pb-10"
+        v-html="post.data.body"
+      ></div>
     </div>
   </div>
 </template>

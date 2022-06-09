@@ -7,7 +7,7 @@ const image: string = `url(${bg})`;
 
 <template>
   <div
-    class="bg-black overflow-hidden min-h-screen bg-fixed"
+    class="bg-black overflow-hidden min-h-screen bg-fixed bg-no-repeat"
     v-bind:style="{ 'background-image': image }"
   >
     <Header />

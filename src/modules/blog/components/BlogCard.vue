@@ -12,22 +12,24 @@ defineProps<{ posts: Post[] }>();
       v-for="(post, index) in posts"
       :key="post.slug"
       :data-index="index"
-      class="mb-4 rounded-md"
+      class="mb-4 rounded-md hover:bg-zinc-800 ease-in-out transition-all duration-400 delay-100 lg:hover:scale-105"
     >
       <router-link
         :to="{ name: 'BlogPost', params: { slug: post.slug } }"
         class="relative"
       >
         <img
-          class="max-h-52 w-full object-cover rounded-md"
+          class="max-h-52 lg:max-h-96 w-full object-cover rounded-md"
           :src="post.featured_image || imgPlaceholder"
           :alt="post.featured_image_alt"
         />
-        <div class="px-2 pt-2">
-          <h5 class="text-md font-semibold text-white">
+        <div class="p-2 lg:p-4">
+          <h5 class="text-md lg:text-lg font-semibold text-white">
             {{ post.title }}
           </h5>
-          <p class="hidden md:block py-2 text-xs text-gray-400 tracking-wide">
+          <p
+            class="hidden lg:block py-2 text-xs lg:text-md text-gray-400 tracking-wide"
+          >
             {{ post.summary }}
           </p>
         </div>
