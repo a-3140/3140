@@ -30,17 +30,17 @@ onMounted(async () => {
       page_size: 10,
     })
   ).data;
-  firstColumnPosts.value = response.data.filter((val: Post, idx: number) => {
-    if (!(idx % 2)) return val;
-  });
-  secondColumnPosts.value = response.data.filter((val: Post, idx: number) => {
-    if (idx % 2) return val;
-  });
+  firstColumnPosts.value = response.data.filter(
+    (val: Post, idx: number) => !(idx % 2) && val
+  );
+  secondColumnPosts.value = response.data.filter(
+    (val: Post, idx: number) => idx % 2 && val
+  );
 });
 </script>
 
 <template>
-  <div class="container m-auto mt-8 bg-zinc-900 pt-4 rounded-t-3xl">
+  <div class="mt-8 pt-4 rounded-3xl bg-zinc-900">
     <div class="xl:max-w-6xl flex space-x-4 mx-4 mt-10 pb-10">
       <div class="flex flex-col basis-1/2">
         <BlogCard :posts="firstColumnPosts" />

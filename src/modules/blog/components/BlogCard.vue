@@ -15,7 +15,7 @@ defineProps<{ posts: Post[] }>();
       class="mb-4 rounded-md"
     >
       <router-link
-        :to="{ name: 'BlogPost', params: { id: post.slug } }"
+        :to="{ name: 'BlogPost', params: { slug: post.slug } }"
         class="relative"
       >
         <img

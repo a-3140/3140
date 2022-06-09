@@ -1,38 +1,85 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from "vue";
-import NotFound from "@/views/NotFound.vue";
-import Spinner from "@/components/loaders/Spinner.vue";
+import { onMounted, ref, unref, watch } from "vue";
+import imgPlaceholder from "@/assets/PlaceholderImage.svg";
+import { rawStringToFormattedDate } from "@/common/functions";
+import { RouterLink, useRoute } from "vue-router";
 
-const Article = defineAsyncComponent({
-  suspensible: false,
-  errorComponent: NotFound,
-  loadingComponent: Spinner,
-  loader: () => import("@/components/articles/Content.vue"),
-  onError: (error, retry, fail, attempts) => {
-    if (attempts <= 3) {
-      console.log("Error", error);
-      retry();
-    } else {
-      console.log("Error", error);
-      fail();
-    }
-  },
+import { butterCMS } from "@/buttercms";
+interface BlogPost {
+  slug: string;
+  body: string;
+  author: Author;
+  title?: string;
+  featured_image?: string;
+  featured_image_alt: string;
+  updated: string;
+}
+
+interface Meta {
+  next_post: { slug: string; title: string };
+  previous_post: { slug: string; title: string };
+}
+
+interface Author {
+  last_name: string;
+  first_name: string;
+}
+
+interface Data {
+  data?: BlogPost;
+  meta?: Meta;
+}
+
+const post = ref<Data>({});
+const loaded = ref(false);
+const route = useRoute();
+
+onMounted(() => {
+  getPost(route.params.slug as string);
 });
-const props: CollectionProps = {
-  name: "Blog",
-  collection: "blogs",
-};
+
+watch(
+  () => route.params.slug,
+  (postSlug) => getPost(postSlug as string)
+);
+
+async function getPost(postSlug: string) {
+  loaded.value = false;
+  post.value = (await butterCMS.post.retrieve(postSlug)).data;
+  document.title = unref(post)?.data?.title || "Blog";
+  console.log("post", post.value);
+  loaded.value = true;
+}
 </script>
 
 <template>
-  <div class="bg-black/50">
-    <KeepAlive>
-      <Suspense>
-        <component :is="Article" :props="props"> </component>
-        <template #fallback>
-          <spinner />
-        </template>
-      </Suspense>
-    </KeepAlive>
+  <div id="blog-post" v-if="loaded && post.data" class="text-white relative">
+    <div
+      class="h-80 w-full bg-cover rounded-b-3xl"
+      :style="{
+        backgroundImage: `url(${post.data.featured_image || imgPlaceholder})`,
+      }"
+    >
+      <div
+        class="w-full bg-black/50 h-full flex flex-row justify-start items-end p-4"
+      >
+        <div>
+          <div class="text-white text-3xl text-semibold tracking-wide">
+            {{ post.data.title }}
+          </div>
+          <div class="text-gray-300 text-xs py-2">
+            {{ rawStringToFormattedDate(post.data.updated) }}
+            <span
+              >- {{ post.data.author.first_name }}
+              {{ post.data.author.last_name }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-4 mt-4 text-left">
+      <div v-html="post.data.body"></div>
+    </div>
   </div>
 </template>

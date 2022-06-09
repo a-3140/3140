@@ -9,10 +9,10 @@ const contentHeader = defineProps<ContentHeader>();
 
 <template>
   <div
-    class="pt-2 mb-2 pb-2 sm:mb-10 sm:pb-6 text-gray-50 h-48 flex justify-center items-center flex-col text-center"
+    class="pt-2 mb-2 pb-2 sm:mb-10 sm:pb-6 text-gray-50 h-96 flex justify-center items-center flex-col text-center"
   >
     <h1
-      class="mb-2 text-center text-3xl sm:text-4xl font-semibold animate-fade-in-down font-mono lowercase"
+      class="mt-2 text-center text-3xl sm:text-4xl font-semibold animate-fade-in-down font-mono lowercase"
     >
       {{ contentHeader.title }}
     </h1>

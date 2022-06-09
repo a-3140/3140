@@ -94,7 +94,7 @@ if (isLogoLoaded)
   <keep-alive>
     <nav
       v-if="isHeaderVisible"
-      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-sm bg-black/90 text-white font-mono"
+      class="mx-auto px-2 md:px-8 xl:px-12 py-5 font-medium shadow-md bg-black/10 text-white font-mono fixed top-0 w-full"
     >
       <div
         class="container flex flex-wrap justify-between items-center mx-auto xl:max-w-6xl"

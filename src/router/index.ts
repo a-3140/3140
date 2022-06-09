@@ -55,7 +55,7 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: "/blog/:id",
+    path: "/blog/:slug",
     name: "BlogPost",
     component: BlogPost,
   },
