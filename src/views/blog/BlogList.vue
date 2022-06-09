@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { butterCMS } from "@/buttercms";
-import { FadeLeft } from "@/common/animation";
-import { sliceDateString } from "@/common/functions";
-import imgPlaceholder from "@/assets/PlaceholderImage.svg";
+import BlogCard from "@/modules/blog/components/BlogCard.vue";
 
-interface Post {
+export interface Post {
   slug?: string;
   date?: string;
   title?: string;
@@ -15,7 +13,6 @@ interface Post {
   featured_image?: string;
   featured_image_alt: string;
   description?: string;
-  categories?: Category[];
 }
 
 interface Category {
@@ -23,47 +20,34 @@ interface Category {
   slug: string;
 }
 
-const posts = ref<Post[]>([]);
+const firstColumnPosts = ref<Post[]>([]);
+const secondColumnPosts = ref<Post[]>([]);
 
 onMounted(async () => {
-  const response = (
+  const response: { data: [] } = (
     await butterCMS.post.list({
       page: 1,
       page_size: 10,
     })
   ).data;
-  posts.value = response.data;
-  console.log("posts", posts.value);
+  firstColumnPosts.value = response.data.filter((val: Post, idx: number) => {
+    if (!(idx % 2)) return val;
+  });
+  secondColumnPosts.value = response.data.filter((val: Post, idx: number) => {
+    if (idx % 2) return val;
+  });
 });
 </script>
 
 <template>
-  <ul class="xl:max-w-6xl bg-black/80">
-    <li
-      v-for="(post, index) in posts"
-      :key="post.slug"
-      :data-index="index"
-      class="bg-zinc-900 border-zinc-700 border-y mb-8 rounded-t-sm"
-    >
-      <router-link :to="{ name: 'BlogPost', params: { id: post.slug } }">
-        <img
-          class="max-h-64 w-full object-cover rounded-t-sm"
-          :src="post.featured_image || imgPlaceholder"
-          :alt="post.featured_image_alt"
-        />
-        <div class="p-5">
-          <a href="#">
-            <h5
-              class="mb-2 text-xl font-bold tracking-tight text-white font-mono"
-            >
-              {{ post.title }}
-            </h5>
-          </a>
-          <p class="mb-3 text-sm text-gray-400 tracking-wide">
-            {{ post.summary }}
-          </p>
-        </div>
-      </router-link>
-    </li>
-  </ul>
+  <div class="container m-auto mt-8">
+    <div class="xl:max-w-6xl bg-black/80 flex space-x-3 mx-2">
+      <div class="flex flex-col basis-1/2">
+        <BlogCard :posts="firstColumnPosts" />
+      </div>
+      <div class="flex flex-col basis-1/2">
+        <BlogCard :posts="secondColumnPosts" />
+      </div>
+    </div>
+  </div>
 </template>
